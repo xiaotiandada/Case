@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2017 by xiaotiandada (http://jsbin.com/tebejiw/11/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+<div>
+  <label for="girth">周长</label>
+  <input type="text" id="girth">
+</div>
+  <div>
+  <label for="area">面积</label>
+  <input type="text" id="area">
+</div><div>
+  <input type="submit" id="sub" value="计算" />
+    <input type="reset" id="res" value="清空" />
+
+</div>
+<script id="jsbin-javascript">
+(function(){
+  'use strict';
+//   通过ID获取变量
+  var girth=document.getElementById('girth');
+  var area=document.getElementById('area');
+  var sub=document.getElementById('sub');
+  var res=document.getElementById('res');
+  
+//   按钮单击执行匿名函数
+  sub.onclick=function(){
+    var Pi = 3.14;
+//     变量已经取值了 现在进行赋值
+    area.value=2*Pi*(girth.value);
+  }
+//   按钮单击执行匿名函数 清空值
+  res.onclick=function(){
+    girth.value="";
+    area.value="";
+  }
+
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    img{
+        width: 100px;
+    }
+    </style>
+</head>
+
+<body>
+    <ul class="list js-list">
+        <div class="js-test" style="display:none;">
+            <li class="item">
+                <div class="item-con">
+                    <img src="$proImg$" />
+                    <em>$proTitle$</em>
+                    <span>$proPrice$</span>
+                </div>
+            </li>
+        </div>
+    </ul>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+    <script>
+        var indexInfo = {
+            'list': [
+                {
+                    'proTitle': '动漫1111',
+                    'proPrice': '11.00',
+                    'proImg': 'http://d.hiphotos.baidu.com/zhidao/pic/item/72f082025aafa40fe871b36bad64034f79f019d4.jpg'
+                },
+                {
+                    'proTitle': '动漫222',
+                    'proPrice': '11.00',
+                    'proImg': 'http://c.hiphotos.baidu.com/zhidao/pic/item/1f178a82b9014a909461e9baa1773912b31bee5e.jpg'
+                },
+                {
+                    'proTitle': '动漫',
+                    'proPrice': '22.00',
+                    'proImg': 'http://pic67.nipic.com/file/20150514/21036787_181947848862_2.jpg'
+                },
+                {
+                    'proTitle': '动漫',
+                    'proPrice': '333.00',
+                    'proImg': 'http://pic40.nipic.com/20140424/13846002_113008517141_2.jpg'
+                }
+            ]
+        }
+
+        String.prototype.temp = function (obj) {
+            return this.replace(/\$\w+\$/gi, function (matchs) {
+                var returns = obj[matchs.replace(/\$/g, "")];
+                return (returns + "") == "undefined" ? "" : returns;
+            });
+        };
+
+        var htmlList = '', htmlTemp = $(".js-test").html();
+        indexInfo.list.forEach(function (object) {
+            htmlList += htmlTemp.temp(object);
+        });
+
+        $(".js-list").html(htmlList);
+
+    </script>
+</body>
+
+</html>

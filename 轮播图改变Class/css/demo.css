@@ -1,0 +1,79 @@
+.banner__main{
+    width: 1200px;
+    height: 460px;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 2px 8px 0 rgba(7,17,27,.06);
+}
+.banner{
+    width: 1200px;
+    height: 460px;
+}
+.banner-slide {
+	width: 1200px;
+    height: 460px;
+    float: left;
+    background-repeat: no-repeat;
+    display: none;
+}
+.slide-active {
+    display: block;
+}
+.slide1{
+	background-image:url(../img/bg1.jpg);
+}
+
+.slide2{
+	background-image:url(../img/bg2.jpg);
+}
+
+.slide3{
+	background-image:url(../img/bg3.jpg);
+}
+
+
+
+.banner__anchor{
+    width: 36px;
+    height: 60px;
+    background: rgba(0, 0, 0, .4);
+    position: absolute;
+    top: 50%;
+    margin-top: -30px;
+    text-decoration: none;
+    line-height: 60px;
+    text-align: center;
+    font-size: 20px;
+    color: #fff;
+}
+.icon__prev{
+    left: 0;
+    border-radius: 0 4px 4px 0;
+   
+}
+.icon__next{
+    right: 0;
+    border-radius: 4px 0 0 4px;
+}
+
+
+.buttons{
+    position: absolute;
+    right: 1%;
+    bottom: 2%;
+}
+.buttons span{
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin: 0 4px;
+    background: rgba(7,17,27,.8);
+    border: 1px solid rgba(255,255,255,.6);
+    cursor: pointer;
+}
+.buttons span.buttons__active{
+    background: #fff;
+    border: 1px solid rgba(7,17,27,.4);
+}

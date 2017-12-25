@@ -1,0 +1,39 @@
+body, html{
+    width: 100%;
+    height: 100%;
+}
+.box{
+    widows: 1000px;
+
+}
+.box img{
+    width: 100%;
+}
+.box p{
+    text-align: center;
+}
+.box p .btn{
+    display: inline-block;
+    border: 1px solid #868686;
+    padding: 10px 20px;
+    margin: 0 20px;
+    text-decoration: none;
+    color: #949494;
+}
+.btn:hover{
+    background: #BDBDBD;
+}
+
+.loading{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #D3D3D3;
+    text-align: center;
+}
+.loading .progress{
+    font-size: 40px;
+    margin-top: 300px;
+}

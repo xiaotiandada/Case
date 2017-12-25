@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2017 by xiaotiandada (http://jsbin.com/lopowap/3/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+<style id="jsbin-css">
+.box{
+  width:200px;
+  height: 300px;
+  background:#333;
+  position: relative;
+  overflow:hidden;
+}
+.boxBottom{
+  width:200px;
+  height:60px;
+  background:red;
+  position: absolute;  
+  left:0;
+  bottom:-60px;
+  transition:all .3s;
+}
+.box:hover{
+  margin-top:-1px;
+  box-shadow: 2px 2px 5px #333;
+}
+.box:hover .boxBottom{
+  bottom:0;
+}
+
+</style>
+</head>
+<body>
+<div class="box">
+  <div class="boxBottom"></div>
+</div>
+</body>
+</html>

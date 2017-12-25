@@ -1,0 +1,229 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="description" content="基于HTML模板以及JSON数据的JavaScript交互 » 张鑫旭-鑫空间-鑫生活" />
+<meta name="description" content="张鑫旭web前端学习实例页面 基于HTML模板以及JSON数据的JavaScript交互" />
+<meta name="keywords" content="html模板, js, JSON, 模板, javascript" />
+<meta name="author" content="张鑫旭, zhangxixnu" />
+<title>基于HTML模板以及JSON数据的JavaScript交互 » 张鑫旭-鑫空间-鑫生活</title>
+<link rel="stylesheet" href="../css/demo.css" type="text/css" />
+<link rel="stylesheet" href="http://www.zhangxinxu.com/study/css/zxx.lib.css" type="text/css" />
+<style>
+body{overflow-x:hidden;}
+ul{padding:0; margin:0; list-style-type:none;}
+.equal_height{width:100%; height:9999px; position:absolute; left:0; top:0;}
+
+.cho_link,.cho_btn,.cho_desc,.cho_asc{background:url(../image/choose_bg.png) no-repeat;}
+.cho_search{width:170px; margin-right:-20px; padding-right:20px; *vertical-align:-2px;}
+.cho_box{border:1px solid #bfbfbf; background-color:#ebebeb; *position:relative; overflow-y:hidden;}
+.cho_line{display:block; padding-top:2px; background-color:#d2d2d2; border-bottom:1px solid #f0f0f0;}
+.cho_left{width:20%; margin-right:10px; float:left; position:relative;}
+.cho_equal_height{border-right:1px solid #ccc; background-color:#fff;}
+.cho_menu{padding-bottom:72px;}
+.cho_link,.cho_link_on{display:block; line-height:32px; padding-left:19px; color:#333; *zoom:1;}
+.cho_link{background-color:#fafafa; border-bottom:1px solid #f6f6f6;}
+.cho_link:hover{background:#f6f6f6; border-bottom:1px solid #e0e0e0; text-decoration:none;}
+.cho_link_on{margin:-1px -1px 0 0; background:#ebebeb; border-bottom:1px solid #ccc; border-top:1px solid #ccc; position:relative; cursor:default;}
+.cho_link_on:hover{text-decoration:none;}
+.cho_list,.cho_list_title{line-height:21px; padding:5px 20px; border-bottom:1px solid #d9d9d9;}
+.cho_list_title{border-bottom-color:#ccc;}
+.cho_list_hover,.cho_list:hover{background-color:#f3f3f3;}
+.cho_list_on,.cho_list_on:hover{background-color:#fbfbfb;}
+.cho_list_li{width:33%; float:left;}
+.cho_btn{display:inline-block; width:45px; height:20px; line-height:19px; background-position:0 -230px; color:#666; font-weight:bold; text-shadow:1px 1px #fff;}
+.cho_btn{position:absolute; left:-6000px;}
+.cho_btn:hover{background-position:0 -260px; color:#fff; text-decoration:none; text-shadow:0 -1px #0D7D00;}
+.cho_list_hover .cho_btn, .cho_list:hover .cho_btn{position:static;}
+.cho_desc,.cho_asc{display:inline-block; width:16px; height:17px; margin-bottom:-3px;}
+.cho_desc{background-position:0 -50px;}
+.cho_desc:hover{background-position:0 -80px;}
+.cho_desc_off{background-position:0 -110px;}
+.cho_asc{background-position:0 -140px;}
+.cho_asc:hover{background-position:0 -170px;}
+.cho_asc_off{background-position:0 -200px;}
+.cho_input{width:42px; height:15px; margin:0 5px; padding:0 0 1px 0; text-align:center; vertical-align:middle;}
+.cho_out{display:none;}
+</style>
+</head>
+
+<body>
+<!-- <div id="header">
+	<a href="http://www.zhangxinxu.com/" class="logo" title="回到鑫空间-鑫生活首页">
+    	<img src="http://www.zhangxinxu.com/php/image/zxx_home_logo.png" border="0" />
+    </a>
+</div> -->
+<div id="main">
+	<h1>基于HTML模板以及JSON数据的JavaScript交互</h1>
+    <div id="body" class="light">
+    	<div id="content" class="show">
+        	<h3>展示</h3>
+            <div class="article_new"><a href="http://www.zhangxinxu.com/wordpress/?p=2649">回到相关文章 »</a></div>
+            <div class="demo">
+            	<p class="tc g9">下面的数据是谷歌到的北京2012-09-23前后的菜价</p>
+            	<div class="mt10 cho_box z">
+                	<b class="cho_line"></b>
+                    <div class="fix">
+                    	<!-- 左边的选菜项 -->
+                    	<div class="cho_left">
+                        	<div class="equal_height cho_equal_height"></div>
+                            <ul class="rel cho_menu">
+                            	<li><a href="javascript:" name="choLink" class="cho_link" data-id="aaaaaa">我爱水果<span class="ml20" id="aaaaaa"></span></a></li>
+                                <li><a href="javascript:" name="choLink" class="cho_link_on" data-id="bbbbbb">我爱蔬菜<span class="ml20" id="bbbbbb"></span></a></li>
+                            </ul>
+                        </div>
+                        
+                        <!-- 右侧主列表 -->
+                        <div id="listOut" class="cell">
+                        	<ul class="fix cho_list_title">
+                                <li class="cho_list_li">名称</li>
+                                <li class="cho_list_li tc">价格(元)</li>
+                                <li class="cho_list_li tc">数量/操作</li>
+                            </ul>
+                        </div>
+                    </div>               
+                </div>
+            </div>
+        </div>       
+    </div>
+</div>
+
+<textarea id="tempArea" class="dn">
+<ul class="fix cho_list $cl$">
+    <li class="cho_list_li">$name$</li>
+    <li class="cho_list_li tc g6">$price$$units$</li>
+    <li class="cho_list_li tc">
+    	<a href="javascript:" class="cho_btn $clbuy$" name="choOpt" title="购买" rel="1" id="$id$">购买</a>
+        <span class="cho_nums $clnum$">
+            <a href="javascript:" class="cho_desc" name="choOpt" title="减少一份" rel="$numDesc$" id="$id$">
+            </a><input class="cho_input" name="choInput" value="$num$" id="$id$" title="修改数量" /><a
+            href="javascript:" class="cho_asc" name="choOpt" title="增加一份" rel="$numAsc$" id="$id$"></a>
+        </span>
+    </li>
+</ul>
+</textarea>
+
+<script>
+    var dataVegetables = {
+        typeId: "bbbbbb",
+        goods: [{ id: "000010", name: "白萝卜", price: 0.4, units: "/斤", num: 0 },
+            { id: "000011", name: "花生", price: 2.25, units: "/斤", num: 0 },
+            { id: "000012", name: "菜花", price: 0.85, units: "/斤", num: 0 },
+            { id: "000013", name: "绿豆芽", price: 0.83, units: "/斤", num: 0 },
+            { id: "000014", name: "荸荠", price: 2.13, units: "/斤", num: 0 },
+            { id: "000015", name: "红薯 ", price: 0.5, units: "/斤", num: 0 },
+            { id: "000016", name: "大白菜 ", price: 0.35, units: "/斤", num: 0 },
+            { id: "000017", name: "青蒜 ", price: 0.75, units: "/斤", num: 0 },
+            { id: "000018", name: "冬瓜", price: 0.32, units: "/斤", num: 0 },
+            { id: "000019", name: "扁豆  ", price: 1.7, units: "/斤", num: 0 }]
+    };
+	
+	String.prototype.temp = function(obj) {
+		return this.replace(/\$\w+\$/gi, function(matchs) {
+			var returns = obj[matchs.replace(/\$/g, "")];
+			return (returns + "") == "undefined"? "": returns;
+		});
+	};
+	
+	var object = {
+		$: function(id) {
+			return document.getElementById(id);
+		},
+		json: {},
+		hash: {},
+		dataGroup: function() {
+			var data = this.json.goods, length = data && data.length;
+			for (var index = 0; index < length; index+=1) {				
+				this.hash[data[index].id] = index;
+			}
+			return this;
+		},
+		htmlList: function() {
+			var html = '', choosed = 0;
+			var index = 0, data = this.json.goods, length = data && data.length;
+			for (index; index < length; index+=1) {
+				if (data[index].num === 0) {
+					data[index].cl = "";
+					data[index].clbuy = "";
+					data[index].clnum = "cho_out";
+				} else {
+					data[index].cl = "cho_list_on";	
+					data[index].clnum = "";
+					data[index].clbuy = "cho_out";
+					data[index].numDesc = data[index].num - 1;
+					data[index].numAsc = data[index].num + 1;
+					
+					choosed++;
+				}
+				
+				html += this.htmlTemp.temp(data[index]);
+			}
+			
+			this.$(this.json.typeId).innerHTML = choosed? ("× " + choosed) : "";
+			
+			return html;
+		},
+		eventBind: function() {
+			var self = this;
+			var oA = document.getElementsByTagName("a"), oA_length = oA.length;
+			var oInput = document.getElementsByTagName("input"), oInput_length = oInput.length;
+			
+			for (var i=0; i<oA_length; i+=1) {
+				if (oA[i].name === "choOpt") {
+					oA[i].onclick = function() {
+						var id = this.id, num = Number(this.rel) || 0, title = this.title;
+						self.json.goods[self.hash[id]].num = num;
+						self.htmlAppend();
+						return false;
+					};
+				}
+			}
+			
+			for (var i=0; i<oInput_length; i+=1) {
+				oInput[i].onchange = function() {
+					if (this.name === "choInput") {
+						var id = this.id, num = parseInt(this.value, 10) || 0;
+						self.json.goods[self.hash[id]].num = num;
+						self.htmlAppend();
+						return false;
+					}
+				};
+			}
+			return this;
+		},
+		htmlAppend: function() {
+			this.listBox.innerHTML = this.htmlTitle + this.htmlList();
+			this.eventBind();
+			return this;
+		},
+		
+		init: function() {
+			this.json = dataVegetables;
+			this.listBox = this.$("listOut");
+			this.htmlTemp = this.$("tempArea").value;
+			this.htmlTitle = this.listBox.innerHTML;
+			this.dataGroup().htmlAppend();
+		}
+	};
+	
+	object.init();
+</script>
+<div id="ad">
+	<script type="text/javascript">	google_ad_client = "pub-0090627341039040";google_ad_slot = "4686885989";google_ad_width = 728;google_ad_height = 90;</script><script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+    <script type="text/javascript">
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-11205167-1']);
+	  _gaq.push(['_trackPageview']);
+	
+	  (function() {
+		var ga = document.createElement('script');
+		 ga.type = 'text/javascript';
+		 ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+	</script>
+</div>
+</body>
+</html>

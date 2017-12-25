@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/preload.css">
+</head>
+
+<body>
+    <div class="box">
+        <img src="http://attach.bbs.miui.com/forum/201605/11/163014tkjbn8bj8z7b2wk0.jpg" alt="pic" id="img">
+        <p>
+            <a href="javascript:;" class="btn" data-control="prev">上一页</a>
+            <a href="javascript:;" class="btn" data-control="next">上一页</a>
+        </p>
+    </div>
+    <script src="../../bower_components/jquery/dist/jquery.js"></script>
+    <script src="./js/preload.js"></script>
+    <script>
+        // var imgs = [
+        //     'http://attach.bbs.miui.com/forum/201605/11/163014tkjbn8bj8z7b2wk0.jpg',
+        //     'http://i1.hdslb.com/bfs/archive/85b0b71490be30e0ace5fafb9e261675e032b4bb.jpg',
+        //     'http://img1.3lian.com/2015/a1/66/d/174.jpg',
+        //     'http://attach.bbs.miui.com/forum/201207/27/141425t22jho52nup5y511.jpg',
+        //     'http://img1.3lian.com/2015/a1/66/d/176.jpg',
+        //     'http://attach.bbs.miui.com/forum/201207/27/141425t22jho52nup5y511.jpg',
+        //     'http://attach.bbs.miui.com/forum/201605/11/163127pv36vrzvj7ggz8u4.jpg',
+        //     'http://attach.bbs.miui.com/forum/201207/27/141625anbce55a6xgkbxdb.jpg',
+        //     'http://c.hiphotos.baidu.com/zhidao/pic/item/242dd42a2834349b118764e3caea15ce37d3bed6.jpg'
+        // ]
+
+        // var len = imgs.length
+        // var count = 0
+        // var index = 0
+
+        // //有序预加载
+        // function load() {
+        //     var imgObj = new Image()
+        //     $(imgObj).on('load error', function () {
+        //         if (count >= len) {
+        //             //加载完成
+        //         } else {
+        //             load()
+        //         }
+
+        //         count++
+        //     })
+        //     imgObj.src = imgs[count]
+        // }
+        // load()
+
+        // $('.btn').on('click', function () {
+        //     if ('prev' === $(this).data('control')) {
+        //         // index = Math.max(0, --index)
+        //         index--
+        //         if (index < 0) {
+        //             index = len - 1
+        //         }
+
+        //     } else {
+        //         // index = Math.min(len - 1 ,++index)
+        //         index++
+        //         if (index > len - 1) {
+        //             index = 0
+        //         }
+
+        //     }
+        //     document.title = (index + 1) + '/' + len
+        //     $('#img').attr('src', imgs[index])
+        // })
+
+        var imgs = [
+            'http://attach.bbs.miui.com/forum/201605/11/163014tkjbn8bj8z7b2wk0.jpg',
+            'http://i1.hdslb.com/bfs/archive/85b0b71490be30e0ace5fafb9e261675e032b4bb.jpg',
+            'http://img1.3lian.com/2015/a1/66/d/174.jpg',
+            'http://attach.bbs.miui.com/forum/201207/27/141425t22jho52nup5y511.jpg',
+            'http://img1.3lian.com/2015/a1/66/d/176.jpg',
+            'http://attach.bbs.miui.com/forum/201207/27/141425t22jho52nup5y511.jpg',
+            'http://attach.bbs.miui.com/forum/201605/11/163127pv36vrzvj7ggz8u4.jpg',
+            'http://attach.bbs.miui.com/forum/201207/27/141625anbce55a6xgkbxdb.jpg',
+            'http://c.hiphotos.baidu.com/zhidao/pic/item/242dd42a2834349b118764e3caea15ce37d3bed6.jpg'
+        ]
+
+        var len = imgs.length
+        var index = 0
+
+        $.preload(imgs, {
+            order: 'ordered'
+        })
+
+        $('.btn').on('click', function () {
+            if ('prev' === $(this).data('control')) {
+                // index = Math.max(0, --index)
+                index--
+                if (index < 0) {
+                    index = len - 1
+                }
+
+            } else {
+                // index = Math.min(len - 1 ,++index)
+                index++
+                if (index > len - 1) {
+                    index = 0
+                }
+
+            }
+            document.title = (index + 1) + '/' + len
+            $('#img').attr('src', imgs[index])
+        })
+    </script>
+</body>
+
+</html>
