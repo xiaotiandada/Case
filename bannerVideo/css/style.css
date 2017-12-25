@@ -1,0 +1,51 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+#header{
+	width: 100%;
+	position: relative;
+}
+#header-video{
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+}
+.header-video-shade{
+    background: rgba(10, 22, 35, 0.9);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+#header-video-text{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+}
+#header-video-text h1{
+	font-size:  60px;
+	font-family:" Microsoft YaHei";
+	text-align: center;
+	color: #fff;
+	margin-top: 130px;
+}
+.header-button{
+	display: block;
+	width: 260px;
+	height: 70px;
+	border-radius: 4px;
+	background:#077282;
+	color: #fff;
+	text-decoration: none;
+	text-align: center;
+	line-height: 70px;
+	font-size: 36px;
+	font-family: "黑体";
+	margin: 80px auto;
+}
+.header-button:hover{
+	background: #008194;
+}
