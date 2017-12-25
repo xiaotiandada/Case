@@ -1,0 +1,7 @@
+#main {
+    color: black;
+    a {
+      font-weight: bold;
+      &:hover { color: rgba(0, 255, 131, 0.50); }
+    }
+  }
