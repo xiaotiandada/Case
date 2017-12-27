@@ -128,26 +128,26 @@
         //     return array;
         // }
 
-        // var arr1 = [1,2,3,4,7,6,5]
-        // var aaa = bSort(arr1,function(a,b){
-        //     return a - b 
-        // })
-        // console.log(aaa)
+        var arr1 = [1,2,3,4,7,6,5]
+        var aaa = bSort(arr1,function(a,b){
+            return a - b 
+        })
+        console.log(aaa)
 
-        // function bSort(array,fn){
-        //     for(var i = 0; i< array.length-1;i++){      // 优化次数
-        //         for(var j = 0;j<array.length-1-i;j++){  // 优化循环次数
-        //             if( fn(array[j], array[j + 1]) > 0){  // 如果 > 升序  < 降序  用fn() 在 a-b or b-a 控制
-        //                 // 交换位置
-        //                 var temp = array[j]    
-        //                 array[j] = array[j+1]
-        //                 array[j+1] = temp
-        //             }
-        //         }
-        //     }
-        //     // 返回数组
-        //     return array
-        // }
+        function bSort(array,fn){
+            for(var i = 0; i< array.length-1;i++){      // 优化次数
+                for(var j = 0;j<array.length-1-i;j++){  // 优化循环次数
+                    if( fn(array[j], array[j + 1]) > 0){  // 如果 > 升序  < 降序  用fn() 在 a-b or b-a 控制
+                        // 交换位置
+                        var temp = array[j]    
+                        array[j] = array[j+1]
+                        array[j+1] = temp
+                    }
+                }
+            }
+            // 返回数组
+            return array
+        }
 
         // 数组1.concat(数组2); // 链接两个数组;
         // var arr1 = [1, 2, 3];
@@ -296,17 +296,17 @@
 
         // 将一个字符串数组的元素的顺序进行反转。["a", "b", "c", "d"] -> ["d", "c", "b", "a"]。使用两种种方式实现。提示：第i个和第length - i - 1个进行交换
         // reverse() 方法
-        var arr = ['a', 'b', 'c', 'd']
+        // var arr = ['a', 'b', 'c', 'd']
         // console.log(arr.reverse())  // ["d", "c", "b", "a"]
 
         // 三种：1.正向遍历，反向添加;  2.反向遍历，正向添加;   3.元数组元素交换位置; 
 
-        for (var i = 0; i < arr.length / 2; i++) {
-            var temp = arr[i]
-            arr[i] = arr[arr.length - 1 - i]
-            arr[arr.length - 1 - i] = temp
-        }
-        console.log(arr)
+        // for (var i = 0; i < arr.length / 2; i++) {
+        //     var temp = arr[i]
+        //     arr[i] = arr[arr.length - 1 - i]
+        //     arr[arr.length - 1 - i] = temp
+        // }
+        // console.log(arr)
 
         // 3.工资的数组[1500, 1200, 2000, 2100, 1800],把工资超过2000的删除
 
