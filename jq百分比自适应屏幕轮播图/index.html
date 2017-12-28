@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .banner {
+            width: 100%;
+            height: 600px;
+            overflow: hidden;
+            margin: 0 auto;
+            position: relative;
+        }
+        .banner:hover .arrow{
+            display: block;
+        }
+
+        .list {
+            width: 700%;
+            height: 600px;
+            position: absolute;
+        }
+
+        .list img {
+            width: 14.285715%;
+            float: left;
+            cursor: pointer;
+        }
+
+        .arrow {
+            position: absolute;
+            top: 50%;
+            margin-top: -40px;
+            text-decoration: none;
+            text-align: center;
+            color: #fff;
+            font-size: 30px;
+            width: 50px;
+            height: 80px;
+            line-height: 80px;
+            background: rgba(0, 0, 0, 0.6);
+            display: none;
+        }
+
+        .arrowLeft {
+            left: 0;
+            border-radius: 0 3px 3px 0;
+        }
+
+        .arrowRight {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .btns {
+            width: 100px;
+            height: 12px;
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            margin-left: -50px;
+        }
+
+        .btns span {
+            cursor: pointer;
+            border: 1px solid #fff;
+            border-radius: 50%;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            width: 10px;
+            height: 10px;
+            margin: 0 4px;
+            float: left;
+        }
+
+        .btns .on {
+            background: #09f;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="banner" id="banner">
+        <div class="list" id="list">
+            <img src="http://img3.imgtn.bdimg.com/it/u=1587293988,596106613&fm=214&gp=0.jpg" alt="5">
+            <img src="http://f.hiphotos.baidu.com/zhidao/pic/item/902397dda144ad3464639dc8d1a20cf430ad85a4.jpg" alt="1">
+            <img src="http://pic40.nipic.com/20140424/13846002_113008517141_2.jpg" alt="2">
+            <img src="http://h.hiphotos.baidu.com/zhidao/pic/item/14ce36d3d539b60075f33ca9ef50352ac65cb7ea.jpg" alt="3">
+            <img src="http://d.hiphotos.baidu.com/zhidao/pic/item/72f082025aafa40fe871b36bad64034f79f019d4.jpg" alt="4">
+            <img src="http://img3.imgtn.bdimg.com/it/u=1587293988,596106613&fm=214&gp=0.jpg" alt="5">
+            <img src="http://f.hiphotos.baidu.com/zhidao/pic/item/902397dda144ad3464639dc8d1a20cf430ad85a4.jpg" alt="1">
+        </div>
+        <a href="javascript:;" class="arrow arrowLeft" id="arrowLeft">&lt;</a>
+        <a href="javascript:;" class="arrow arrowRight" id="arrowRight">&gt;</a>
+        <div class="btns">
+            <span index="1" class="on"></span>
+            <span index="2"></span>
+            <span index="3"></span>
+            <span index="4"></span>
+            <span index="5"></span>
+        </div>
+    </div>
+    <script type="text/javascript" src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.js"></script>
+    <script>
+        $(function () {
+            var oBanner = $('#banner')
+            var oList = $('#list')
+            var oLeft = $('#arrowLeft')
+            var oRight = $('#arrowRight')
+            var oSpan = $('.btns span')
+            var oWitdh = parseInt(oList.css('width')) / 7
+            var len = 5
+            var index = 1
+            var timer = null
+            var interval = 3000
+
+            oList.css('left', -oWitdh)
+
+            function animates(offset) {
+                var newLeft = parseInt(oList.css('left')) + offset
+                oList.animate({ 'left': newLeft + 'px' }, function () {
+                    if (newLeft > 0) {
+                        oList.css('left', -oWitdh * len)
+                    }
+                    if (newLeft < -oWitdh * 5) {
+                        oList.css('left', -oWitdh)
+                    }
+                })
+            }
+
+            function showBtns() {
+                oSpan.each(function () {
+                    $(this).attr('class', '')
+                })
+                $('.btns > span').eq(index - 1).addClass('on')
+            }
+
+            function autoPlay() {
+                timer = setTimeout(function () {
+                    oRight.trigger('click');
+                    autoPlay()
+                }, interval)
+            }
+            function stop() {
+                clearInterval(timer)
+            }
+
+            oLeft.on('click', function () {
+                if (oList.is(':animated')) {
+                    return
+                }
+                if (index == 1) {
+                    index = 5
+                } else {
+                    index -= 1
+                }
+                animates(oWitdh)
+                showBtns()
+            })
+            oRight.on('click', function () {
+                if (oList.is(':animated')) {
+                    return
+                }
+                if (index == 5) {
+                    index = 1
+                } else {
+                    index += 1
+                }
+                animates(-oWitdh)
+                showBtns()
+            })
+
+            oSpan.each(function () {
+                $(this).on('click', function () {
+                    if (oList.is(':animated') || $(this).attr('class') == 'on') {
+                        return
+                    }
+                    var myIndex = $(this).attr('index')
+                    var offset = (myIndex - index) * -oWitdh
+                    index = myIndex
+                    animates(offset)
+                    showBtns()
+                })
+            })
+
+
+            oBanner.on('mouseout', function () {
+                autoPlay()
+            })
+            oBanner.on('mouseover', function () {
+                stop()
+            })
+            autoPlay()
+
+
+
+        })
+    </script>
+</body>
+
+</html>
