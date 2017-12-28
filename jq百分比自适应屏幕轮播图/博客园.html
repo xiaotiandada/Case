@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Banner-jQuery</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 100%;
+            height: 600px;
+            overflow: hidden;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        #list {
+            width: 700%;
+            height: 600px;
+            position: absolute;
+        }
+
+        #list img {
+            width: 14.285715%;
+            float: left;
+            cursor: pointer;
+        }
+
+        .arrow {
+            position: absolute;
+            color: #fff;
+            text-decoration: none;
+            bottom: 20px;
+            text-align: center;
+            width: 40px;
+            height: 40px;
+            font-size: 30px;
+            top: 230px;
+            font-weight: bold;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        #left {
+            left: 20px;
+        }
+
+        #right {
+            right: 20px;
+        }
+
+        .btns {
+            width: 100px;
+            height: 10px;
+            position: absolute;
+            bottom: 20px;
+            left: 42%;
+        }
+
+        .btns span {
+            cursor: pointer;
+            border: 1px solid #fff;
+            border-radius: 50%;
+            margin-right: 8px;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            width: 10px;
+            height: 10px;
+            float: left;
+        }
+
+        .btns .on {
+            background: orange;
+        }
+    </style>
+    
+</head>
+
+<body>
+    <div class="container" id="container">
+        <div id="list">
+            <img alt="5" src='http://i1.hdslb.com/bfs/archive/85b0b71490be30e0ace5fafb9e261675e032b4bb.jpg'>
+            <img alt="1" src='http://d.hiphotos.baidu.com/zhidao/pic/item/72f082025aafa40fe871b36bad64034f79f019d4.jpg'>
+            <img alt="2" src='http://img0.imgtn.bdimg.com/it/u=365838049,1155045605&fm=27&gp=0.jpg'>
+            <img alt="3" src='http://images.ali213.net/picfile/pic/2013/03/12/927_hyss%20%281%29.jpg'>
+            <img alt="4" src='http://images.ali213.net/picfile/pic/2013/03/12/927_hyss%20%281%29.jpg'>
+            <img alt="5" src='http://i1.hdslb.com/bfs/archive/85b0b71490be30e0ace5fafb9e261675e032b4bb.jpg'>
+            <img alt="1" src='http://d.hiphotos.baidu.com/zhidao/pic/item/72f082025aafa40fe871b36bad64034f79f019d4.jpg'>
+        </div>
+        <a href="javascript:void(0)" class="arrow" id="left">
+            <</a>
+                <a href="javascript:void(0)" class="arrow" id="right">></a>
+                <div class="btns">
+                    <span class="on" index="1"></span>
+                    <span index="2"></span>
+                    <span index="3"></span>
+                    <span index="4"></span>
+                    <span index="5"></span>
+                </div>
+    </div>
+    <script type="text/javascript" src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var oList = $("#list");
+            var oRight = $("#right");
+            var oLeft = $("#left");
+            var oWidth = parseInt(oList.css('width')) / 7;      //计算图片的宽度从而达到自适应屏幕宽度
+            var oSpan = $(".btns span");
+            var len = 5;
+            var index = 1;
+            var interval = 3000;
+            var timer = null;
+            oList.css('left', -oWidth);              //图片加载完成时将图片向左偏移一张图片
+
+            function animate(offset) {                               //过渡效果
+                var newLeft = parseInt(oList.css('left')) + offset;         //点击后的图片偏移量
+                oList.animate({ 'left': newLeft + 'px' }, function () {
+                    if (newLeft > 0) {                                 //判断图片是否已经循环一次
+                        oList.css('left', -oWidth * len);
+                    }
+                    if (newLeft < -oWidth * 5) {
+                        oList.css('left', -oWidth);
+                    }
+                });
+            }
+
+            function showBtns() {                //按钮过渡
+                oSpan.each(function () {                  //遍历每个按钮将其Class设置为空
+                    $(this).attr('class', '');
+                });
+                $(".btns > span").eq(index - 1).addClass('on');          //将当前Span的索引Class设置为on
+            }
+
+            function autoplay() {                        //自动播放
+                timer = setTimeout(function () {
+                    oRight.trigger('click');
+                    autoplay();
+                }, interval);
+            }
+
+            function stop() {
+                clearInterval(timer);
+            }
+
+            oList.on('mouseover', function () {            //判断鼠标是否在容器上面
+                stop();
+            });
+
+            oList.on('mouseout', function () {
+                autoplay();
+            });
+
+            oRight.on('click', function () {
+                if (oList.is(':animated')) {
+                    return;
+                }
+                if (index == 5) {         //向右点击 index索引+1
+                    index = 1;
+                } else {
+                    index += 1;
+                }
+                animate(-oWidth);
+                showBtns();
+            });
+
+            oLeft.on('click', function () {
+                if (oList.is(':animated')) {
+                    return;
+                }
+                if (index == 1) {         //向左点击 index索引-1
+                    index = 5;
+                } else {
+                    index -= 1;
+                }
+                animate(oWidth);
+                showBtns();
+            });
+
+            oSpan.each(function () {                  //底部按钮点击切换图片
+                $(this).on('click', function () {
+                    if (oList.is(":animated") || $(this).attr('class') == "on") {
+                        return;
+                    }
+                    var myIndex = $(this).attr('index');
+                    var offset = (myIndex - index) * -oWidth;
+                    index = myIndex;
+                    animate(offset);
+                    showBtns();
+                })
+            })
+
+            autoplay();
+        });
+    </script>
+</body>
+
+</html>
