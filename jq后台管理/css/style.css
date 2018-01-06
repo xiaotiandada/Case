@@ -1,0 +1,87 @@
+html,body{
+    height: 100%;
+    font: 14px "微软雅黑","宋体","Arial Narrow",HELVETICA;
+}
+
+
+/* font */
+
+
+.main{
+    min-width: 1000px;
+    height: 100%;
+    background: #FCFCFC;
+}
+
+.nav{
+    width: 220px;
+    height: 100%;
+    background: #263238;
+    float: left;
+}
+.navlogo{
+    height: 60px;
+    background: #000;
+    text-align: center;
+}
+.navlogo a i {
+    font-size: 26px;
+}
+.navlogo a{
+    color: #fff;
+    text-decoration: none;
+    font-size: 24px;
+    line-height: 60px;
+}
+
+.navitem ul {
+    padding: 0;
+    margin: 0;
+}
+.navitem ul li {
+    list-style: none;
+   
+}
+.navitem ul li a i {
+    color: #ABB1B7;
+    font-size: 20px;
+    padding-right: 6px;
+}
+.navitem ul li a {
+    display: block;
+    overflow: hidden;
+    height: 46px;
+    line-height: 46px;
+    color: #ABB1B7;
+    text-decoration: none;
+    padding-left: 20px;
+}
+.navitem ul li ul{
+    display: none;
+    background: rgba(0,0,0,.1);
+}
+.navitem ul li ul li a {
+    padding-left: 48px;
+}
+
+
+.iconright{
+    float: right;
+    margin-right: 16px;
+    transition: all .3s;
+}
+
+.navshow .iconright{
+    transform: rotate(90deg);
+}
+
+.content{
+    min-width: 800px;
+    height: 100%;
+}
+.content p {
+    margin: 0;
+    padding: 0;
+    font-size: 50px;
+    text-align: center;
+}
