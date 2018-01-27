@@ -133,7 +133,7 @@
         //     return a - b 
         // })
         // console.log(aaa)
-        
+
         // function bSort(array,fn){
         //     for(var i = 0; i< array.length-1;i++){      // 优化次数
         //         for(var j = 0;j<array.length-1-i;j++){  // 优化循环次数
@@ -148,6 +148,202 @@
         //     // 返回数组
         //     return array
         // }
+
+        // 数组1.concat(数组2); // 链接两个数组;
+        // var arr1 = [1, 2, 3];
+        // var arr2 = ["a", "b", "c"];
+        // var arr3 = arr1.concat(arr2);
+        // console.log(arr3)   //    [1, 2, 3, "a", "b", "c"]
+
+        // 数组.slice(开始索引值，结束索引值);     //数组截取;
+
+        // var arr = [1, 2, 3, "a", "b", "c"];
+        // console.log(arr.slice(3));            //从索引值为3截取到最后;["a", "b", "c"]
+        // console.log(arr.slice(0, 3));            //包左不包右;[1, 2, 3]
+        // console.log(arr.slice(-2));            //负数是后几个;["b", "c"]
+        // console.log(arr.slice(3, 0));            //如果前面的比后面的大，那么就是[];[]
+        // console.log(arr);                          //原数组不被修改;[1, 2, 3, "a", "b", "c"]
+
+        // 数组.splice(开始索引值，删除几个，替换内容1，替换内容2，...);  // 替换和删除;
+        //改变原数组;返回值是被删除/替换的内容
+
+        // var arr = [1, 2, 3, 4, 5, 6, "a", "b", "c"]
+        // arr.splice(5);        //从索引值为3截取到最后;(删除)
+        // console.log(arr);     // [1, 2, 3, 4, 5]
+        // arr.splice(1, 2);    //(删除指定个数)从索引为1的开始删除2个
+        // console.log(arr);   //[1, 4, 5]
+
+        // //替换
+        // var arr = [1, 2, 3, 4, 5, 6, "a", "b", "c"];
+        // console.log(arr.splice(3, 3, "aaa", "bbb", "ccc"));    //(删除指定数并替换)
+        // console.log(arr);     // [1, 2, 3, "aaa", "bbb", "ccc", "a", "b", "c"]
+        // //    添加
+        // arr.splice(3, 0, "aaa", "bbb", "ccc");//(删除指定个数)
+        // //
+        // console.log(arr);//截取或者替换之后的;   [1, 2, 3, "aaa", "bbb", "ccc", "aaa", "bbb", "ccc", "a", "b", "c"]
+
+        // 数组.indexOf(元素);      // 给元素，查索引(从前往后)
+        // 数组.lastIndexOf(元素);  // 给元素，查索引(从后往前)
+
+        // var arr = ["a", "b", "c", "d", "c", "b", "b"];
+        // console.log(arr.indexOf("b"));        // 1 查到以后立刻返回
+        // console.log(arr.lastIndexOf("b"));    // 6 找到以后立刻返回
+        // console.log(arr.indexOf("xxx"));    // -1;  查不到就返回-1；
+
+        // 数组迭代(遍历)
+        // every()
+        // 对数组中每一项运行回调函数，如果都返回true，every返回true，
+        // 如果有一项返回false，则停止遍历 every返回false；不写默认返回false
+        // 像保镖失误一次，游戏结束！！！
+
+        // var arr = [111, 222, 333, 444, 555];
+        // arr.every(function (a, b, c) {
+        //     console.log(a);    //元素
+        //     console.log(b);    //索引值
+        //     console.log(c);    //数组本身;
+        //     console.log("-----");    //数组本身;
+        //     //数组中元素赋值：c[b] = 值;      a=有时候无法赋值;
+        //     return true;
+        // });
+
+        // //every返回一个bool值，全部是true才是true；有一个是false，结果就是false
+        // var bool = arr.every(function(element, index, array){
+        //     // 判断 > 200
+        //     if(element>100){   // true
+        //     // if(element>200){
+        //         return true;
+        //     }else{
+        //         return false
+        //     }
+        // })
+        // console.log(bool) // false;
+
+        // 对数组中每一项运行回调函数，该函数返回结果是true的项组成的新数组
+        //     新数组是有老数组中的元素组成的，return为ture的项;
+
+        // var arr = [111, 222, 333, 444, 555]
+        // var newArr = arr.filter(function (element, index, aray) {
+        //     // 只要是奇数 组成数组
+        //     if (element % 2 === 0) {
+        //         return true;
+        //     } else {
+        //         return false;
+        //     }
+        // })
+        // console.log(newArr) // 222 444
+
+        // 和for循环一样；没有返回值;
+        // var arr = [111, 222, 333, 444, 555];
+        // var sum = 0;
+        // var aaa = arr.forEach(function (element, index, array) {
+        //     console.log(element); // 输出数组中的每一个元素
+        //     console.log(index); // 数组元素对应的索引值
+        //     console.log(array); // 数组本身 [111, 222, 333, 444, 555]
+        //     sum += element; //数组中元素求和;
+        // });
+        // console.log(sum); // 数组元素加起来的和
+        // console.log(aaa);//undefined；没有返回值 所以返回undefined
+        //  对数组中每一项运行回调函数，返回该函数的结果组成的新数组
+        //    return什么新数组中就有什么; 不return返回undefined; 对数组二次加工
+
+        // var arr = [111, 222, 333, 444, 555];
+        // var newArr = arr.map(function (element, index, array) {
+        //     if (index == 2) {
+        //         return element; // 这里return了 所以下面返回的值是333
+        //     }
+        //     return element * 100; // 返回的元素值都乘上100后的值
+        // })
+        // console.log(newArr); // [11100, 22200, 333, 44400, 55500]
+
+        // //对数组中每一项运行回调函数，如果该函数对某一项返回true，则some返回true; 像杀手，有一个成功，就胜利了！！！
+
+        // var arr = [111, 222, 333, 444, 555];
+        // var bool = arr.some(function (ele, i, array) {
+        //     //判断：数组中有3的倍数
+        //     if (ele % 3 == 0) {
+        //         return true;
+        //     }
+        //     return false;
+        // })
+        // alert(bool); //true ; 有一个成功就是true
+
+        // 数组清空
+        // arr.length = 0; // (不好，伪数组无法清空)
+        // arr.splice(0); // 伪数组没有这个方法;
+        // arr = [];     // 可以操作伪数组; (推荐!)
+        // 伪数组: 就是长的像数组，但是没有数组的方法;也不能添加和删除元素;
+        // arguments
+        // fn(111, 222, 333);
+        // function fn() {
+        //     arguments.length = 0; // 无法清空 返回 [1, 2, 3]
+        //     // arguments.splice(0); // 会报错 arguments.splice is not a function
+        //     // arguments = []; // 可以清空,返回空数组[] 
+        //     console.log(arguments);
+        // }
+
+        // 数组案例
+        // 1.将一个字符串数组输出为|分割的形式，比如“刘备|张飞|关羽”。使用两种方式实现
+        // var arr = ['刘备','张飞','关羽']
+        // var separator = '|'
+        // var str =arr[0]
+        // for(var i = 1;i<arr.length;i++){
+        //     str += separator + arr[i]
+        // }
+        // console.log(str)  // 刘备|张飞|关羽
+        // console.log(typeof str)
+        // // join 连接成字符串
+        // console.log(arr.join('|')) // 刘备|张飞|关羽
+
+        // 将一个字符串数组的元素的顺序进行反转。["a", "b", "c", "d"] -> ["d", "c", "b", "a"]。使用两种种方式实现。提示：第i个和第length - i - 1个进行交换
+        // reverse() 方法
+        var arr = ['a', 'b', 'c', 'd']
+        // console.log(arr.reverse())  // ["d", "c", "b", "a"]
+
+        // 三种：1.正向遍历，反向添加;  2.反向遍历，正向添加;   3.元数组元素交换位置; 
+
+        for (var i = 0; i < arr.length / 2; i++) {
+            var temp = arr[i]
+            arr[i] = arr[arr.length - 1 - i]
+            arr[arr.length - 1 - i] = temp
+        }
+        console.log(arr)
+
+        // 3.工资的数组[1500, 1200, 2000, 2100, 1800],把工资超过2000的删除
+
+        // var arr = [1500, 1200, 2000, 2100, 1800];
+        // //利用filter()形成一个数组;return true;组成的数组;
+        // var newArr = arr.filter(function (ele, i, array) {
+        //     //2000以上返回false;
+        //     if (ele < 2000) {
+        //         return true;
+        //     } else {
+        //         return false;
+        //     }
+        // });
+        // console.log(newArr); // [1500, 1200, 1800]
+
+        // var arr = ["c", "a", "z", "a", "x", "a"];
+        // //遍历数组(for/while/do...while)    forEach();
+        // arr.forEach(function (ele, index, array) {
+        //     //如果元素等于“a”，那么就输出索引值；
+        //     if ("a" === ele) {
+        //         console.log(index);
+        //     }
+        // });
+
+        // //    5.编写一个方法去掉一个数组的重复元素 (数组去重)
+
+        // var arr = ["鸣人", "鸣人", "佐助", "佐助", "小樱", "小樱"];
+        // //  方法1：  思路：定义一个新数组，遍历老数组，判断，如果新数组里面没有老数组的元素就添加，否则就不添加；
+        // var newArr = [];
+        // //遍历老数组
+        // arr.forEach(function (ele, index, array) {
+        //     //检测老数组中的元素，如果新数组中存在就不添加了，不存在才添加;
+        //     if (newArr.indexOf(ele) === -1) {//不存在就添加;（去新数组中查找元素索引值，如果为-1就是没有）
+        //         newArr.push(ele);
+        //     }
+        // });
+        // console.log(newArr); // ["鸣人", "佐助", "小樱"]
 
 
 
