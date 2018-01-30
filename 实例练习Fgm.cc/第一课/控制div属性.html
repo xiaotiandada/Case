@@ -48,7 +48,8 @@
 
         for(var i = 0;i<oBtn.length;i++){
             oBtn[i].index = i
-            console.log(i)
+            // console.log(i)
+            console.log(oBtn[i].index)
             oBtn[i].onclick = function(){
             console.log(this.index)
                 this.index == oBtn.length - 1 && (oDiv.style.cssText = '')
