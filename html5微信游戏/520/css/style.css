@@ -1,0 +1,207 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #ef94ac;
+    position: relative;
+}
+
+/* loading */
+
+#loading {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    background: #ef94ac;
+    font-size: 0;
+    text-align: center;
+    color: #fff;
+}
+
+#loading::after {
+    content: '';
+    background: url(../i/loading.png) no-repeat;
+    background-size: cover;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+}
+
+/* scene1 */
+
+#scene1 {
+    left: 0;
+}
+
+#scene2 {
+    left: 100%;
+}
+
+#scene3 {
+    left: 100%;
+    background: url(../i/resultbg.jpg) no-repeat 50% 50%;
+    background-size: cover;
+}
+
+#scene1,
+#scene2,
+#scene3 {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.slogan-img {
+    opacity: 0;
+    font-size: 0;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+}
+
+.slogan-text {
+    opacity: 0;
+    position: absolute;
+    color: #fff;
+    font-size: 12px;
+    text-align: center;
+}
+
+
+#heart {
+    top: 15%;
+    background: url(../i/heart.png) no-repeat 0 0;
+    background-size: cover;
+    width: 122px;
+    height: 98px;
+}
+
+#t0 {
+    top: 50%;
+    background: url(../i/1.png) no-repeat;
+    background-size: cover;
+    width: 132px;
+    height: 61px;
+}
+
+#t1 {
+    top: 65%;
+    background: url(../i/2.png) no-repeat;
+    background-size: cover;
+    width: 220px;
+    height: 20px;
+}
+
+#t2 {
+    top: 73%;
+    background: url(../i/3.png) no-repeat;
+    background-size: cover;
+    width: 202px;
+    height: 41px;
+}
+
+#sbtn {
+    top: 80%;
+    background: url(../i/start.png) no-repeat;
+    background-size: cover;
+    width: 240px;
+    height: 79px;
+}
+
+#t3 {
+    top: 15px;
+    position: absolute;
+    width: 100%;
+}
+
+#lbtn {
+    top: 100%;
+    background: url(../i/show.png) no-repeat;
+    background-size: cover;
+    width: 240px;
+    height: 56px;
+}
+
+#t4 {
+    top: 40%;
+    background: url(../i/4.png) no-repeat;
+    background-size: cover;
+    width: 156px;
+    height: 52px;
+}
+
+#t5 {
+    top: 53%;
+    background: url(../i/5.png) no-repeat;
+    background-size: cover;
+    width: 160px;
+    height: 22px;
+}
+
+#t6 {
+    top: 60%;
+    background: url(../i/6.png) no-repeat;
+    background-size: cover;
+    width: 166px;
+    height: 40px;
+}
+
+#t7 {
+    top: 115%;
+    position: absolute;
+    width: 100%;
+}
+
+#ercode {
+    left: 50%;
+    top: 75%;
+    opacity: 0;
+    margin-left: -71px;
+    position: absolute;
+}
+
+#musicplayer {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+}
+
+#musicplayer button {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 30px;
+    height: 30px;
+    border: 0;
+}
+
+#musicon {
+    background: url(../i/musicon.png);
+    background-size: cover;
+}
+
+#musicoff {
+    background: url(../i/musicoff.png);
+    background-size: cover;
+}
+
+.hidden {
+    display: none;
+}

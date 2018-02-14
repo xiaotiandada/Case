@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <div id="wx_pic" style="margin:0 auto;display:none;">
+        <img src="i/300.jpg" alt="">
+    </div>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- loading -->
+    <div id="loading">加载中...</div>
+    <!-- 初始界面 -->
+    <div id="scene1">
+        <div id="heart" class="slogan-img">爱心</div>
+        <div id="t0" class="slogan-img">520</div>
+        <div id="t1" class="slogan-img">这真是个适合表达爱意的日子</div>
+        <div id="t2" class="slogan-img">你爱的是谁？</div>
+        <div id="sbtn" class="slogan-img">马上测一测！</div>
+    </div>
+    <!-- 交互界面 -->
+    <div id="scene2">
+        <div id="t3" class="slogan-text">请不断单机屏幕，发现你最爱的TA</div>
+        <div id="lbtn" class="slogan-img">爱在华师大！</div>
+    </div>
+    <!-- 结果界面 -->
+    <div id="scene3">
+        <div id="t4" class="slogan-img">ECNU</div>
+        <div id="t5" class="slogan-img">师大学子一声牵绊</div>
+        <div id="t6" class="slogan-img">520说爱你</div>
+        <div id="t7" class="slogan-img">520，我们微信服务平台上线啦<br />更多更好的服务等着你！</div>
+        <div id="ercode">
+            <img src="i/ercode.png" alt="二维码" width="142">
+        </div>
+    </div>
+    <!-- 音乐控制界面 -->
+    <div id="musicplayer">
+        <button id="musicon" class="hidden"></button>
+        <button id="musicoff"></button>
+        <audio src="loop.mp3" loop id="music"></audio>
+    </div>
+
+    <script src="./js/TweenMax.min.js"></script>
+    <script src="./js/script.js"></script>
+</body>
+</html>
