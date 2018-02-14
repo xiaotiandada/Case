@@ -91,20 +91,22 @@ sbtn.onclick = showScene2
 document.addEventListener('touchstart', getPosition)
 
 function getPosition(ev) {
-    if (drawMode) {
-        ev = ev || window.event
+    if (drawMode) { //只有在绘图模式下才开始绘制圆点
+        ev = ev || window.event 
         ev.preventDefault()
+
+        //为了使图案在水平方向上居中，计算出当前屏幕宽度与设计宽度（320像素）之间的差异值，以作为后续的位移基准值
         let xbias = (window.innerWidth - 320) / 2
-        let touch = ev.touches[0]
-        let point = {
+        let touch = ev.touches[0]   //获取第一个触点的信息
+        let point = { 
             x: 0,
             y: 0
-        }
-        point.x = Number(touch.pageX)
-        point.y = Number(touch.pageY)
+        }  //创建一个对象来储存触点坐标
+        point.x = Number(touch.pageX) //记录触点X坐标
+        point.y = Number(touch.pageY) //记录触点Y坐标
         if (mi < pl) {
-            let objdiv = document.createElement('div')
-            let objname = 's_' + mi
+            let objdiv = document.createElement('div')  
+            let objname = 's_' + mi  //设置name属性  
             objdiv.id = objname
             objdiv.style.position = 'absolute'
             objdiv.style.display = 'block'
@@ -120,14 +122,14 @@ function getPosition(ev) {
             TweenMax.to(objdiv, 1, {
                 top: p[mi][1],
                 left: p[mi][0] + xbias
-            })
+            })  //创建从触摸点到目标坐标点的位移动画
             mi++
         } else {
-            drawMode = false
+            drawMode = false //圆点全部显示完毕后，关闭绘图模式
             TweenMax.to(lbtn, .8, {
                 opacity: 1,
                 top: '80%'
-            })
+            }) //显示结束按钮
         }
     }
     return false
