@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #container,
+        #sections,
+        .section {
+            height: 100%;
+            position: relative;
+        }
+
+        .section1,
+        .section2,
+        .section3,
+        .section4 {
+            background-size: cover;
+            background-position: 50% 50%;
+        }
+
+        .section1 {
+            background-image: url(1.jpg);
+        }
+
+        .section2 {
+            background-image: url(2.jpg);
+        }
+
+        .section3 {
+            background-image: url(3.jpg);
+        }
+
+        .section4 {
+            background-image: url(4.jpg);
+        }
+
+        .sectionsActive0 {
+            transform: translateY(0);
+        }
+
+        .sectionsActive1 {
+            transform: translateY(-100%);
+        }
+
+        .sectionsActive2 {
+            transform: translateY(-200%);
+        }
+
+        .sectionsActive3 {
+            transform: translateY(-300%);
+        }
+
+        #sections {
+            transition: transform .75s;
+        }
+
+        ul.pages {
+            position: fixed;
+            right: 10px;
+            top: 50%;
+            width: 16px;
+            height: 86px;
+            margin: 0;
+            padding: 0;
+        }
+
+        ul.pages li {
+            list-style: none;
+            width: 14px;
+            height: 14px;
+            border: 1px solid #cecece;
+            border-radius: 50%;
+            margin: 4px 0;
+            cursor: pointer;
+        }
+
+        .active {
+            background: #006bc1;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="sections">
+            <div class="section section1"></div>
+            <div class="section section2"></div>
+            <div class="section section3"></div>
+            <div class="section section4"></div>
+        </div>
+
+        <ul class="pages">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="./mousewheel.js"></script>
+    <script>
+        $(function () {
+            var sections = $('#sections')
+            var sectionslen = $('#sections .section').length
+            var pages = $('.pages li')
+            var sum = 0
+            let time = null
+
+            function run() {
+                pages.eq(sum).addClass('active').siblings().removeClass('active')
+                sections.removeClass().addClass('sectionsActive' + sum)
+            }
+            run()
+
+            pages.each(function (index) {
+                $(this).on('click', function () {
+                    sum = index
+                    if (isbool) return
+                    run()
+                })
+            })
+
+            sections.one('mousewheel', mouse_);
+
+            function mouse_(evebt) {
+                if (event.deltaY < 0) {
+                    up()
+                } else {
+                    down()
+                }
+                run()
+                clearTimeout(time)
+                time = setTimeout(function () {
+                    sections.one('mousewheel', mouse_)
+                }, 1000);
+
+
+            }
+
+            function up() {
+                sum--
+                if (sum < 0) {
+                    sum = sectionslen - 1
+                }
+            }
+
+            function down() {
+                isbool = true
+                sum++
+                if (sum == sectionslen) {
+                    sum = 0
+                }
+            }
+
+            $(document).one('keydown', kdown)
+
+            function kdown(event) {
+                var e = event || window.event
+                var key = e.keyCode || e.which || e.charCode
+                switch (key) {
+                    case 38:
+                        up()
+                        run()
+                        break;
+                    case 40:
+                        down()
+                        run()
+                        break
+                }
+
+                clearTimeout(time)
+                time = setTimeout(function () {
+                    $(document).one('keydown', kdown)
+                }, 1000);
+            }
+        })
+    </script>
+</body>
+
+</html>
