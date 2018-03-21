@@ -138,11 +138,11 @@
 
             sections.one('mousewheel', mouse_);
 
-            function mouse_(evebt) {
+            function mouse_(event) {
                 if (event.deltaY < 0) {
-                    up()
-                } else {
                     down()
+                } else {
+                    up()
                 }
                 run()
                 clearTimeout(time)
