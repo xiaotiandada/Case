@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>lolSix</title>
+    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.0/normalize.css">
+    <link rel="stylesheet" href="./public/css/style.css">
+</head>
+
+<body>
+    <div class="topNav">
+        <h1 class="none">英雄联盟6周年盛典 一起秀出6</h1>
+        <ul id="nav-ul" class="nav-ul">
+            <li class="fl">
+                <a href="javascript:;" class="nav-btn1">星之守护者</a>
+                <div class="navinfo">
+                    <p class="p1">
+                        <em class="ico1"></em>
+                        <span class="nav-ul-tit">星之守护者</span>
+                    </p>
+                    <p class="p2">全新5款魔法少女皮肤星耀来袭</p>
+                </div>
+                <i></i>
+            </li>
+
+            <li class="fl nav-bgc">
+                <a href="javascript:;" class="nav-btn2">周边狂欢乐园</a>
+                <div class="navinfo">
+                    <p class="p1">
+                        <em class="ico2"></em>
+                        <span class="nav-ul-tit">周边狂欢乐园</span>
+                    </p>
+                    <p class="p2">惊喜周边 多重好礼等你来</p>
+                </div>
+                <i></i>
+            </li>
+
+            <li class="fl">
+                <a href="javascript:;" class="nav-btn3">互动有礼</a>
+                <div class="navinfo">
+                    <p class="p1">
+                        <em class="ico3"></em>
+                        <span class="nav-ul-tit">互动有礼</span>
+                    </p>
+                    <p class="p2">秀操作，拿奖品</p>
+                </div>
+                <i></i>
+            </li>
+
+            <li class="fl nav-bgc">
+                <a href="javascript:;" class="nav-btn4">英雄联盟音乐节</a>
+                <div class="navinfo">
+                    <p class="p1">
+                        <em class="ico4"></em>
+                        <span class="nav-ul-tit">英雄联盟音乐节</span>
+                    </p>
+                    <p class="p2">预约购票，一起玩转音乐</p>
+                </div>
+                <i></i>
+            </li>
+        </ul>
+        <div class="logob">英雄联盟6周年盛典</div>
+        <div class="navh" id="navh">
+            <ul class="nav" id="nav">
+                <li class="ligb fl">
+                    <div class="navico1"></div>
+                    <div class="navitxt1"></div>
+                    <a href="javascript:;" class="navbtn"></a>
+                    <em></em>
+                </li>
+                <li class="ligb fl">
+                    <div class="navico2"></div>
+                    <div class="navitxt2"></div>
+                    <a href="javascript:;" class="navbtn"></a>
+                    <em></em>
+                </li>
+                <li class="ligb fl">
+                    <div class="navico3"></div>
+                    <div class="navitxt3"></div>
+                    <a href="javascript:;" class="navbtn"></a>
+                    <em></em>
+                </li>
+                <li class="ligb fl">
+                    <div class="navico4"></div>
+                    <div class="navitxt4"></div>
+                    <a href="javascript:;" class="navbtn"></a>
+                    <em></em>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="wrap">
+        <div class="wrap_o">
+            <div class="logo">
+                <a href="javascript:;" class="btn-logo1"></a>
+                <a href="javascript:;" class="btn-logo2"></a>
+            </div>
+            <a href="javascript:;" class="btn-dy"></a>
+            <div class="swf">
+                <div id="mymovie" class="mymovie"></div>
+            </div>
+        </div>
+    </div>
+    <script src="./public/js/jquery.min.js"></script>
+    <script src="./public/js/script.js"></script>
+    <script src="./public/js/swfobject.js"></script>
+    <script src="index.swf"></script>
+    <script>
+        var params = {
+            scale: "noscale",
+            wmode: "transparent",
+            align: "middle",
+            allowFullscreen: "true",
+            allowScriptAccess: "always",
+            FlashVars: "timer=1480586966506&endtimer=1481094000000"
+        }
+        swfobject.embedSWF("index.swf", "mymovie", "100%", "670", "8.0.0","expressInstall.swf", null, params);
+    </script>
+</body>
+
+</html>

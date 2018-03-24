@@ -1,0 +1,602 @@
+// base
+body {
+    background: #080620;
+    min-width: 1000px;
+}
+
+.none {
+    display: none;
+}
+
+.fl {
+    float: left;
+}
+
+a {
+    text-decoration: none;
+    color: #b1cbff;
+}
+#mymovie {visibility:hidden}
+//  topnav
+.topnav {
+    width: 100%;
+    min-width: 1240px;
+}
+
+.nav-ul {
+    width: 100%;
+    height: 75px;
+    margin: 0;
+    padding: 0;
+    li {
+        background: #232d77;
+        width: 25%;
+        height: 75px;
+        text-align: center;
+        color: #fff;
+        position: relative;
+        overflow: hidden;
+    }
+    i {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 125px;
+        height: 100px;
+        font-style: normal;
+        display: block;
+    }
+    .nav-bgc {
+        background: #1a246a;
+    }
+}
+
+.ico1,
+.ico2,
+.ico3,
+.ico4,
+.ico5,
+.nav-ul-tit {
+    display: inline-block;
+}
+
+.nav-btn1,
+.nav-btn2,
+.nav-btn3,
+.nav-btn4,
+.nav-btn5,
+.nav-btn1:hover,
+.nav-btn2:hover,
+.nav-btn3:hover,
+.nav-btn4:hover,
+.nav-btn5:hover {
+    display: block;
+    text-indent: -999em;
+    width: 100%;
+    height: 75px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 99;
+}
+
+.ico1,
+.ico2,
+.ico3,
+.ico4,
+.ico5,
+.nav-ul li:hover .ico1,
+.nav-ul li:hover .ico2,
+.nav-ul li:hover .ico3,
+.nav-ul li:hover .ico4,
+.nav-ul li:hover .ico5 {
+    background: url("../img/topnav-sprite.png") no-repeat;
+    width: 22px;
+    height: 22px;
+}
+
+.nav-ul .ans2_btn1,
+.nav-ul .ans2_btn2,
+.nav-ul .ans2_btn3,
+.nav-ul .ans2_btn4,
+.nav-ul .ans2_btn5,
+.nav-ul .ans2_btn6,
+.nav-ul .ans2_btn7,
+.nav-ul .ans2_btn8,
+.nav-ul .ans2_btn9,
+.nav-ul .ans2_btn10,
+.nav-ul .ans2_btn11,
+.nav-ul .ans2_btn12,
+.nav-ul .ans2_btn13,
+.nav-ul .ans2_btn14,
+.nav-ul .ans2_btn15,
+.nav-ul .ans2_btn16,
+.nav-ul .ans2_btn17,
+.nav-ul .ans2_btn18,
+.nav-ul .ans2_btn19,
+.nav-ul .ans2_btn20,
+.nav-ul .ans2_btn21,
+.nav-ul .ans2_btn22,
+.nav-ul .ans2_btn23,
+.nav-ul .ans2_btn24,
+.nav-ul .ans2_btn25 {
+    background: url("../img/btn2_sprite.png") no-repeat;
+}
+
+.nav-ul .ans2_btn1 {
+    background-position: -225px -15px;
+}
+
+.nav-ul .ans2_btn2 {
+    background-position: -575px -15px;
+}
+
+.nav-ul .ans2_btn3 {
+    background-position: -925px -15px;
+}
+
+.nav-ul .ans2_btn4 {
+    background-position: -225px -115px;
+}
+
+.nav-ul .ans2_btn5 {
+    background-position: -575px -115px;
+    ;
+}
+
+.nav-ul .ans2_btn6 {
+    background-position: -925px -115px;
+}
+
+.nav-ul .ans2_btn7 {
+    background-position: -225px -215px;
+}
+
+.nav-ul .ans2_btn8 {
+    background-position: -575px -215px;
+}
+
+.nav-ul .ans2_btn9 {
+    background-position: -925px -215px;
+}
+
+.nav-ul .ans2_btn10 {
+    background-position: -225px -315px;
+}
+
+.nav-ul .ans2_btn11 {
+    background-position: -575px -315px;
+}
+
+.nav-ul .ans2_btn12 {
+    background-position: -925px -315px;
+}
+
+.nav-ul .ans2_btn13 {
+    background-position: -225px -415px;
+}
+
+.nav-ul .ans2_btn14 {
+    background-position: -575px -415px;
+}
+
+.nav-ul .ans2_btn15 {
+    background-position: -925px -415px;
+}
+
+.nav-ul .ans2_btn16 {
+    background-position: -225px -515px;
+}
+
+.nav-ul .ans2_btn17 {
+    background-position: -575px -515px;
+}
+
+.nav-ul .ans2_btn18 {
+    background-position: -925px -515px;
+}
+
+.nav-ul .ans2_btn19 {
+    background-position: -225px -615px;
+}
+
+.nav-ul .ans2_btn20 {
+    background-position: -575px -615px;
+}
+
+.nav-ul .ans2_btn21 {
+    background-position: -925px -615px;
+}
+
+.nav-ul .ans2_btn22 {
+    background-position: -225px -715px;
+}
+
+.nav-ul .ans2_btn23 {
+    background-position: -575px -715px;
+}
+
+.nav-ul .ans2_btn24 {
+    background-position: -925px -715px;
+}
+
+.nav-ul .ans2_btn25 {
+    background-position: -225px -815px;
+}
+
+.nav-ul li:hover .ico1 {
+    background-position: -27px 0;
+}
+
+.nav-ul li:hover .ico2 {
+    background-position: -25px -30px;
+}
+
+.nav-ul li:hover .ico3 {
+    background-position: -25px -61px;
+}
+
+.nav-ul li:hover .ico4 {
+    background-position: -25px -90px;
+}
+
+.nav-ul li:hover .ico5 {
+    background-position: -25px -121px;
+}
+
+.ico1 {
+    background-position: 0 0;
+}
+
+.ico2 {
+    background-position: 0 -30px;
+}
+
+.ico3 {
+    background-position: 0 -61px;
+}
+
+.ico4 {
+    background-position: 0 -90px;
+}
+
+.ico5 {
+    background-position: 0 -121px;
+}
+
+.navinfo {
+    text-align: center;
+    position: relative;
+    z-index: 20;
+    .p1 {
+        padding-top: 8px;
+        font-size: 14px;
+        color: #d1dbff;
+        margin: 0;
+        .icon1 {
+            background-position: 0 0;
+        }
+        .nav-ul-tit {
+            font-size: 22px;
+            margin-left: 8px;
+        }
+    }
+    .p2 {
+        padding-top: 0;
+        font-size: 14px;
+        color: #d1dbff;
+    }
+}
+
+
+// logob
+.logob {
+    background: url("../img/logob.png") no-repeat;
+    width: 380px;
+    height: 444px;
+    position: absolute;
+    left: 50%;
+    margin-left: -190px;
+    top: 138px; 
+    font-size: 0;
+    display: none;
+}
+
+
+// navh
+
+.navh {
+    width: 100%;
+    height: 153px;
+    position: absolute;
+    top: 835px;
+}
+
+.nav {
+    width: 1240px;
+    padding-left: 20px;
+    margin: 0 auto;
+    li {
+        float: left;
+        position: relative;
+        width: 310px;
+        height: 150px;
+    }
+}
+
+.ligb{
+    background: url("../img/navbg.png") 25px 30px no-repeat;
+}
+
+.navico1,
+.navico2,
+.navico3,
+.navico4 {
+    background: url("../img/navico.png") no-repeat;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 4
+}
+
+.navitxt1,
+.navitxt2,
+.navitxt3,
+.navitxt4 {
+    background: url("../img/navtxt_sprite.png") no-repeat;
+    height: 54px;
+    position: absolute;
+    left: 120px;
+    top: 50px;
+    z-index: 5
+}
+
+.navico1 {
+    width: 115px;
+    height: 142px;
+    left: 1px;
+    top: -2px;
+}
+
+.navico2 {
+    background-position: -124px 0;
+    width: 132px;
+    height: 142px;
+    left: -8px;
+    top: 0;
+}
+
+.navico3 {
+    background-position: -258px 0;
+    width: 105px;
+    height: 170px;
+    top: -17px;
+    left: 2px;
+}
+
+.navico4 {
+    background-position: -363px 0;
+    width: 115px;
+    height: 142px;
+    top: 12px;
+    left: -8px;
+}
+
+.navitxt1 {
+    width: 115px;
+    left: 122px;
+    top: 49px;
+}
+
+.navitxt2 {
+    width: 115px;
+    background-position: 0 -60px;
+    left: 110px;
+    top: 49px;
+}
+
+.navitxt3 {
+    width: 115px;
+    background-position: 0 -120px;
+    left: 109px;
+    top: 50px;
+}
+
+.navitxt4 {
+    width: 132px;
+    background-position: 0px -186px;
+    left: 101px;
+}
+
+.navbtn {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 9;
+    width: 280px;
+    height: 142px;
+}
+
+.nav em {
+    position: absolute;
+    left: 54px;
+    top: 32px;
+    width: 280px;
+    height: 90px;
+    z-index: 1;
+
+    display: none;
+}
+
+.nav .ans_btn1,
+.nav .ans_btn2,
+.nav .ans_btn3,
+.nav .ans_btn4,
+.nav .ans_btn5,
+.nav .ans_btn6,
+.nav .ans_btn7,
+.nav .ans_btn8,
+.nav .ans_btn9,
+.nav .ans_btn10,
+.nav .ans_btn11,
+.nav .ans_btn12,
+.nav .ans_btn13,
+.nav .ans_btn14,
+.nav .ans_btn15,
+.nav .ans_btn16,
+.nav .ans_btn17,
+.nav .ans_btn18,
+.nav .ans_btn19,
+.nav .ans_btn20,
+.nav .ans_btn21,
+.nav .ans_btn22,
+.nav .ans_btn23,
+.nav .ans_btn24,
+.nav .ans_btn25 {
+    background: url("../img/btn1_sprite.png") no-repeat;
+}
+
+.nav .ans_btn2 {
+    background-position: -280px 0;
+}
+
+.nav .ans_btn3 {
+    background-position: -560px 0;
+}
+
+.nav .ans_btn4 {
+    background-position: 0 -90px;
+}
+
+.nav .ans_btn5 {
+    background-position: -280px -90px;
+}
+
+.nav .ans_btn6 {
+    background-position: -560px -90px;
+}
+
+.nav .ans_btn7 {
+    background-position: 0 -180px;
+}
+
+.nav .ans_btn8 {
+    background-position: -280px -180px;
+}
+
+.nav .ans_btn9 {
+    background-position: -560px -180px;
+}
+
+.nav .ans_btn10 {
+    background-position: 0 -270px;
+}
+
+.nav .ans_btn11 {
+    background-position: -280px -270px;
+}
+
+.nav .ans_btn12 {
+    background-position: -560px -270px;
+}
+
+.nav .ans_btn13 {
+    background-position: 0 -360px;
+}
+
+.nav .ans_btn14 {
+    background-position: -280px -360px;
+}
+
+.nav .ans_btn15 {
+    background-position: -560px -360px;
+}
+
+.nav .ans_btn16 {
+    background-position: 0 -450px;
+}
+
+.nav .ans_btn17 {
+    background-position: -280px -450px;
+}
+
+.nav .ans_btn18 {
+    background-position: -560px -450px;
+}
+
+.nav .ans_btn19 {
+    background-position: 0 -540px;
+}
+
+.nav .ans_btn20 {
+    background-position: -280px -540px;
+}
+
+.nav .ans_btn21 {
+    background-position: -560px -540px;
+}
+
+.nav .ans_btn22 {
+    background-position: 0 -630px;
+}
+
+.nav .ans_btn23 {
+    background-position: -280px -630px;
+}
+
+.nav .ans_btn24 {
+    background-position: -560px -630px;
+}
+
+.nav .ans_btn25 {
+    background-position: 0 -720px;
+}
+
+// wrap
+
+.wrap{
+    background: url("../img/wrap_bg.jpg") center top #070e2a no-repeat;
+    min-width: 1240px;
+    .wrap_o{
+        background: url("../img/conw_bg.jpg") center 966px no-repeat;
+        height: 966px;
+        position: relative;
+    }
+}
+.logo{
+    .btn-logo1, .btn-logo2 {
+    background: url("../img/logo.png") no-repeat;
+    width: 146px;
+    height: 56px;
+    position: absolute;
+    left: 40px;
+    z-index: 99;
+        top: 60px;
+    }
+    .btn-logo2 {
+        left: 235px;
+        width: 132px;
+        height: 102px;
+        background-position: -191px 0;
+    }
+}
+
+.btn-dy {
+    width: 182px;
+    height: 63px;
+    position: absolute;
+    left: 50%;
+    margin-left: -91px;
+    z-index: 99;
+    top: 560px;
+}
+.btn-booking,.btn-booked,.btn-dy,.btn-play,.btn-all{ 
+    background: url("../img/btn_sprite.png") no-repeat;
+}
+.swf {
+    width: 100%;
+    height: 670px;
+    position: absolute;
+    left: 0;
+    top: 1px;
+}
