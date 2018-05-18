@@ -4,3 +4,6 @@
 #### San
 
 A Flexible JavaScript Component Framework
+
+---
+
