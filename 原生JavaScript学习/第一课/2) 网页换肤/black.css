@@ -1,0 +1,10 @@
+body{
+	background:rgb(109, 109, 109);	
+}
+#nav{
+	background:#000;
+	border-color:#fff;	
+}
+#nav li{
+	border-color:#fff;	
+}

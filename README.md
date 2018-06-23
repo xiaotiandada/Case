@@ -3,3 +3,7 @@
 ### Anime 动画练习
 
 ### beforeCase以前的练习
+
+### 原生JavaScript学习
+
+> http://fgm.cc/learn/
