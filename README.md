@@ -11,4 +11,6 @@
 ## jsTool
 
 - 跨浏览器事件处理程序
+- 跨浏览器事件处理程序1
 - 添加className
+- copyingArrays
