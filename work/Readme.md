@@ -8,3 +8,8 @@
 - 2018.7.16 熟悉 ace-admin 框架
     - 管理后台模板,基于CSS框架Bootstrap制作
     - 兼容BootStrap,兼容Jquery UI
+
+- 2018.7.17 在win10装工作软件和配置环境 熟悉idea javaWeb项目
+    - http://www.cnblogs.com/yangyquin/p/5285272.html
+    - https://blog.csdn.net/wangxiaoan1234/article/details/76409210
+    - ......等等
