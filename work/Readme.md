@@ -13,3 +13,7 @@
     - http://www.cnblogs.com/yangyquin/p/5285272.html
     - https://blog.csdn.net/wangxiaoan1234/article/details/76409210
     - ......等等
+
+- 2018.7.18 熟悉Springboot thymeleaf layui
+    - 利用Springboot thymeleaf layui搭建后台界面
+    - 后期希望实现局部刷新 做一个比较完整的后台
