@@ -21,4 +21,5 @@
 - 2018.7.19 熟悉Springboot
     - 利用Srpingboot模拟Api
     - 利用swagger 生成文档并且可以测试
+    - 后期希望连接MySQL做到增删改查
     - 用idea运行erp项目
