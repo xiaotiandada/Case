@@ -17,3 +17,7 @@
 - 2018.7.18 熟悉Springboot thymeleaf layui
     - 利用Springboot thymeleaf layui搭建后台界面
     - 后期希望实现局部刷新 做一个比较完整的后台
+
+- 2018.7.18 熟悉Springboot
+    - 利用Srpingboot模拟Api
+    - 利用swagger 生成文档 测试
