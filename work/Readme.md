@@ -18,6 +18,7 @@
     - 利用Springboot thymeleaf layui搭建后台界面
     - 后期希望实现局部刷新 做一个比较完整的后台
 
-- 2018.7.18 熟悉Springboot
+- 2018.7.19 熟悉Springboot
     - 利用Srpingboot模拟Api
-    - 利用swagger 生成文档 测试
+    - 利用swagger 生成文档并且可以测试
+    - 用idea运行erp项目
