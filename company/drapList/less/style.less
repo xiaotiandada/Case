@@ -1,0 +1,172 @@
+//外部容器 start
+.drapMain{
+    min-width: 900px;
+    width: 900px;
+    height: 600px;
+    margin: 100px auto 0;
+    padding: 20px;
+    border: 1px solid #eee;
+    overflow: hidden;
+}
+//外部容器 end
+
+//页眉页脚公共样式
+    .header,
+    .footer{
+        width: 100%;
+        // 拖动列表容器
+        .drapList,
+        .mainDarpList{
+            width: 68%;
+            max-width: 400px;
+        }
+        .drapListC,
+        .drapListC{
+            float: left;
+            margin-top: 9px;
+            margin-left: 2%;
+            font-size: 14px;
+            color: #ff0000;
+            font-weight: 400;
+            width: 30%;
+        }
+    }
+
+//页眉页脚公共样式 end
+
+
+//main
+.main{
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+//main end
+
+//drapSumContainer
+.drapSumContainer{
+    overflow: hidden;
+}
+.drapSumList{
+    width: 100%;
+}
+//drapSumContainer end
+
+//公共样式
+.drapContainer{
+    overflow: hidden;
+    background: #fff;
+    margin-bottom: 10px;
+}
+.drapList,
+.mainDarpList,
+.drapSumList{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 1px solid #cbcbcb;
+    border-radius: 3px;
+    float: left;
+    list-style: none;
+    min-height: 40px;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    -webkit-transition: width .28s;
+    -moz-transition: width .28s;
+    -ms-transition: width .28s;
+    -o-transition: width .28s;
+    transition: width .28s;
+    li {
+        display: block;
+        padding: 4px 6px;
+        text-align: center;
+        float: left;
+        background: #6fb3e0;
+        border-radius: 3px;
+        color: #fff;
+        margin: 6px 3px;
+        font-size: 14px;
+        &:hover{
+            cursor: move;
+        }
+    }
+}
+
+
+// 加减列按钮
+.lessDrapList,
+.addDrapList{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    vertical-align: middle;
+    color: #fff;
+    padding: 0;
+    margin: 0;
+    border: 1px solid #6faae0;
+    background: #6FB3E0;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 3px;
+    text-decoration: none;
+    &:hover{
+        background: #6cabd7;
+    }
+    &:active{
+        background: #66a3cc;
+    }
+}
+
+// 弹出信息框
+.drapFullMessage{
+    /*width: 160px;*/
+    margin: auto;
+    padding: 10px 16px;
+    color: #fff;
+    text-align: center;
+    border-radius: 3px;
+    font-size: 16px;
+    background: rgba(0, 0, 0, 0.73);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+// 测试结果按钮
+.test{
+    display: block;
+    text-align: center;
+    line-height: 20px;
+    vertical-align: middle;
+    color: #fff;
+    padding: 4px 10px;
+    width: 50%;
+    margin: 60px auto 0;
+    border: 1px solid #6faae0;
+    background: #6FB3E0;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 3px;
+    text-decoration: none;
+}
+
+//关闭按钮
+.drapList .close{
+    &:after {
+        color: #fff;
+        text-align: center;
+        font-size: 12px;
+        margin-left: 4px;
+        cursor: pointer;
+        content: '\2716';
+    }
+}
+

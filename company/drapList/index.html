@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>demo</title>
+    <link rel="stylesheet" href="public/css/normalize.css">
+    <link rel="stylesheet" href="public/css/style.css">
+</head>
+<body>
+<div class="drapMain">
+
+            <div class="header" id="header">
+                <div class="drapContainer">
+                    <ul class='drapList'></ul>
+                    <div class="drapListC">
+                        <a href="javascript:;" class="addDrapList">+</a>
+                        一行只允许三列!
+                    </div>
+                </div>
+            </div>
+
+            <div class="main">
+                <ul class="mainDarpList" id='mainDarpList'>
+                    <li>
+                        <input type="checkbox"  data-id="设置内容" name="dragInput" value="设置内容">
+                        <span>设置内容</span>
+                    </li>
+
+                    <li>
+                        <input type="checkbox"  data-id="产品名称" name="dragInput" value="产品名称">
+                        <span>产品名称</span>
+                    </li>
+                    <li>
+                        <input type="checkbox"  data-id="规格名称" name="dragInput" value="规格名称">
+                        <span>规格名称</span>
+                    </li>
+                    <li>
+                        <input type="checkbox"  data-id="产品数量" name="dragInput" value="产品数量">
+                        <span>产品数量</span>
+                    </li>
+                    <li>
+                        <input type="checkbox"  data-id="产品注册号" name="dragInput" value="产品注册号">
+                        <span>产品注册号</span>
+                    </li>
+                    <li>
+                        <input type="checkbox"  data-id="生产厂家" name="dragInput" value="生产厂家">
+                        <span>生产厂家</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="footer" id="footer">
+                <div class="drapContainer">
+                    <ul class='drapList'>
+
+                    </ul>
+                    <div class="drapListC">
+                        <a href="javascript:;" class="addDrapList">+</a>
+                        一行只允许三列!
+                    </div>
+                </div>
+            </div>
+
+        <div class="drapSumContainer">
+            <ul class="drapSumList" id='drapSumList'>
+                <li>
+                    <span class="close">产品名称</span>
+                    <!--<div class="close"></div>-->
+                </li>
+                <li>
+                    <span class="close">规格名称</span>
+                    <!--<div class="close"></div>-->
+                </li>
+                <li>
+                    <span class="close">产品数量</span>
+                    <!--<div class="close"></div>-->
+                </li>
+                <li>
+                    <span class="close">产品注册号</span>
+                    <!--<div class="close"></div>-->
+                </li>
+                <li>
+                    <span class="close">生产厂家</span>
+                    <!--<div class="close"></div>-->
+                </li>
+                <li>
+                    <span class="close">厂家许可证号</span>
+                    <!--<div class="close"></div>-->
+                </li>
+                <li>
+                    <span class="close">采购单号</span>
+                    <!--<div class="close"></div>-->
+                </li>
+            </ul>
+        </div>
+
+</div>
+
+<a href="javascript:;" class="test" id="test">输出结果</a>
+
+<div id="drapFullMessage" class="drapFullMessage"></div>
+
+<!--模板-->
+<div id="muban" style="display: none">
+    <div class="drapContainer">
+        <ul class='drapList'>
+
+        </ul>
+        <div class="drapListC">
+            <a href="javascript:;" class="lessDrapList">-</a>
+            <a href="javascript:;" class="addDrapList">+</a>
+            一行只允许三列!
+        </div>
+    </div>
+</div>
+
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+<script src="public/js/Sortable.js"></script>
+<script src="public/js/script.js"></script>
+</body>
+</html>
