@@ -1,39 +1,34 @@
-//外部容器 start
+//外部容器
 .drapMain{
-    min-width: 900px;
-    width: 900px;
-    height: 600px;
-    margin: 100px auto 0;
+    margin: 100px 40px 0;
     padding: 20px;
     border: 1px solid #eee;
     overflow: hidden;
 }
-//外部容器 end
 
-//页眉页脚公共样式
-    .header,
-    .footer{
-        width: 100%;
-        // 拖动列表容器
-        .drapList,
-        .mainDarpList{
-            width: 68%;
-            max-width: 400px;
-        }
-        .drapListC,
-        .drapListC{
-            float: left;
-            margin-top: 9px;
-            margin-left: 2%;
-            font-size: 14px;
-            color: #ff0000;
-            font-weight: 400;
-            width: 30%;
-        }
-    }
 
-//页眉页脚公共样式 end
 
+
+.header,
+.footer{
+    width: 100%;
+}
+
+// 拖动列表容器
+.drapList,
+.mainDarpList{
+    width: 68%;
+}
+.mainDrapListInputValC,
+.drapListC{
+    float: left;
+    margin-top: 9px;
+    margin-left: 2%;
+    font-size: 14px;
+    color: #ff0000;
+    font-weight: 400;
+    width: 30%;
+}
 
 //main
 .main{
@@ -42,7 +37,6 @@
     margin-bottom: 10px;
 }
 
-//main end
 
 //drapSumContainer
 .drapSumContainer{
@@ -51,9 +45,7 @@
 .drapSumList{
     width: 100%;
 }
-//drapSumContainer end
 
-//公共样式
 .drapContainer{
     overflow: hidden;
     background: #fff;
@@ -91,34 +83,18 @@
         &:hover{
             cursor: move;
         }
-    }
-}
 
+        input[type="number"]{
+            width: 50px;
 
-// 加减列按钮
-.lessDrapList,
-.addDrapList{
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    text-align: center;
-    line-height: 20px;
-    vertical-align: middle;
-    color: #fff;
-    padding: 0;
-    margin: 0;
-    border: 1px solid #6faae0;
-    background: #6FB3E0;
-    cursor: pointer;
-    font-size: 18px;
-    font-weight: bold;
-    border-radius: 3px;
-    text-decoration: none;
-    &:hover{
-        background: #6cabd7;
-    }
-    &:active{
-        background: #66a3cc;
+            border: 1px solid #ccc;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+            padding: 2px 0 2px 4px;
+
+            outline: 0;
+        }
     }
 }
 

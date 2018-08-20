@@ -158,22 +158,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }
 
     /**
-     * 输出所有 mainDarpList 列表选中的值
-     * @param el
-     * @returns {Array}
-     */
-    function sortingCheckedSum(el) {
-        var arr = [];
-        $(el).each(function () {
-            if ($(this).is(':checked')) {
-                // console.log($(this).val())
-                arr.push($(this).val());
-            }
-        });
-        return arr;
-    }
-
-    /**
      * 输出所有 drapList 列表的值
      * @param el
      * @returns {Array}
@@ -187,43 +171,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }
 
     /**
-     * 添加新行
+     * 获取自定义的数组，返回一个结果数组
+     * @param el
+     * @returns {Array}
      */
-    $('.addDrapList').each(function () {
-        $(this).click(function (e) {
-            var element = $(this).parent().parent().parent().children();
-            var len = element.length;
-            if (len >= 3) {
-                toggleDrapFullMessage('#drapFullMessage', '最多不能超过三行！', 1000);
-                return false;
-            } else {
-                $(this).parent().parent().parent().append($("#muban .drapContainer").clone(true));
-            }
-            e.stopPropagation();
-            draplist.UpdetaElementDrapList();
+    function mainDrapListInputVal(el) {
+        var arr = [];
+        $(el).each(function () {
+            arr.push($(this).val());
         });
-    });
-
-    /**
-     * 删除一行
-     */
-    $('.lessDrapList').each(function () {
-        $(this).click(function (e) {
-            var element = $(this).parent().prev().children();
-            var len = element.length;
-            if (len) {
-                $(element).each(function () {
-                    $('#drapSumList').append($(this));
-                });
-                $(this).parent().parent().remove();
-                return false;
-            } else {
-                $(this).parent().parent().remove();
-            }
-            e.stopPropagation();
-            draplist.UpdetaElementDrapList();
-        });
-    });
+        return arr;
+    }
 
     /**
      * 删除一个元素 插入到原始列表
@@ -239,24 +197,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      * 测试结果
      */
     $('#test').click(function () {
-        var elMainDrapList = $('#mainDarpList li input[type=checkbox]');
 
         var elHeader = $('#header .drapContainer .drapList li span');
         var elFooter = $('#footer .drapContainer .drapList li span');
-        // let elSumList = $('#drapSumList li')
+
+        var elMainInputval = $('.mainDrapListInputVal');
 
         /**
          * 返回结果
          */
-        console.log(
-        /**
-         * 勾选结果
-         */
-        sortingCheckedSum(elMainDrapList),
-        /**
-         * 拖拽之后的结果
-         */
-        sortingListSum(elHeader), sortingListSum(elFooter));
+        console.log(sortingListSum(elHeader), sortingListSum(elFooter), mainDrapListInputVal(elMainInputval));
     });
 })();
 //# sourceMappingURL=script.js.map

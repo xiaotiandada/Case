@@ -15,18 +15,7 @@
                 <div class="drapContainer">
                     <ul class='drapList'></ul>
                     <div class="drapListC">
-                        一行只允许三列!
-                    </div>
-                </div>
-                <div class="drapContainer">
-                    <ul class='drapList'></ul>
-                    <div class="drapListC">
-                        一行只允许三列!
-                    </div>
-                </div>
-                <div class="drapContainer">
-                    <ul class='drapList'></ul>
-                    <div class="drapListC">
+                        <a href="javascript:;" class="addDrapList">+</a>
                         一行只允许三列!
                     </div>
                 </div>
@@ -35,31 +24,31 @@
             <div class="main">
                 <ul class="mainDarpList" id='mainDarpList'>
                     <li>
-                        <input class="mainDrapListInputVal" type="number" name="drapInputNumber" min="0" max="100" placeholder="20">
-                        <span>产品名称</span>
+                        <input type="checkbox"  data-id="设置内容" name="dragInput" value="设置内容">
+                        <span>设置内容</span>
                     </li>
 
                     <li>
-                        <input class="mainDrapListInputVal" type="number" name="drapInputNumber" min="0" max="100" placeholder="20">
-                        <span>生产厂家</span>
+                        <input type="checkbox"  data-id="产品名称" name="dragInput" value="产品名称">
+                        <span>产品名称</span>
                     </li>
                     <li>
-                        <input class="mainDrapListInputVal" type="number" name="drapInputNumber" min="0" max="100" placeholder="20">
+                        <input type="checkbox"  data-id="规格名称" name="dragInput" value="规格名称">
                         <span>规格名称</span>
                     </li>
                     <li>
-                        <input class="mainDrapListInputVal" type="number" name="drapInputNumber" min="0" max="100" placeholder="20">
+                        <input type="checkbox"  data-id="产品数量" name="dragInput" value="产品数量">
                         <span>产品数量</span>
                     </li>
                     <li>
-                        <input class="mainDrapListInputVal" type="number"  name="drapInputNumber" min="0" max="100" placeholder="20">
-                        <span>采购单号</span>
+                        <input type="checkbox"  data-id="产品注册号" name="dragInput" value="产品注册号">
+                        <span>产品注册号</span>
+                    </li>
+                    <li>
+                        <input type="checkbox"  data-id="生产厂家" name="dragInput" value="生产厂家">
+                        <span>生产厂家</span>
                     </li>
                 </ul>
-
-                <div class="mainDrapListInputValC">
-                    总计100；如20,20,20,20,20(五个选项各占20%)
-                </div>
             </div>
 
             <div class="footer" id="footer">
@@ -68,22 +57,7 @@
 
                     </ul>
                     <div class="drapListC">
-                        一行只允许三列!
-                    </div>
-                </div>
-                <div class="drapContainer">
-                    <ul class='drapList'>
-
-                    </ul>
-                    <div class="drapListC">
-                        一行只允许三列!
-                    </div>
-                </div>
-                <div class="drapContainer">
-                    <ul class='drapList'>
-
-                    </ul>
-                    <div class="drapListC">
+                        <a href="javascript:;" class="addDrapList">+</a>
                         一行只允许三列!
                     </div>
                 </div>
@@ -93,24 +67,31 @@
             <ul class="drapSumList" id='drapSumList'>
                 <li>
                     <span class="close">产品名称</span>
+                    <!--<div class="close"></div>-->
                 </li>
                 <li>
                     <span class="close">规格名称</span>
+                    <!--<div class="close"></div>-->
                 </li>
                 <li>
                     <span class="close">产品数量</span>
+                    <!--<div class="close"></div>-->
                 </li>
                 <li>
                     <span class="close">产品注册号</span>
+                    <!--<div class="close"></div>-->
                 </li>
                 <li>
                     <span class="close">生产厂家</span>
+                    <!--<div class="close"></div>-->
                 </li>
                 <li>
                     <span class="close">厂家许可证号</span>
+                    <!--<div class="close"></div>-->
                 </li>
                 <li>
                     <span class="close">采购单号</span>
+                    <!--<div class="close"></div>-->
                 </li>
             </ul>
         </div>
@@ -121,8 +102,21 @@
 
 <div id="drapFullMessage" class="drapFullMessage"></div>
 
+<!--模板-->
+<div id="muban" style="display: none">
+    <div class="drapContainer">
+        <ul class='drapList'>
 
-<script src="public/js/jquery2.1.4.js"></script>
+        </ul>
+        <div class="drapListC">
+            <a href="javascript:;" class="lessDrapList">-</a>
+            <a href="javascript:;" class="addDrapList">+</a>
+            一行只允许三列!
+        </div>
+    </div>
+</div>
+
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
 <script src="public/js/Sortable.js"></script>
 <script src="public/js/script.js"></script>
 </body>

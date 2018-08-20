@@ -143,22 +143,6 @@
     }
 
     /**
-     * 输出所有 mainDarpList 列表选中的值
-     * @param el
-     * @returns {Array}
-     */
-    function sortingCheckedSum(el) {
-        let arr = []
-        $(el).each(function () {
-            if($(this).is(':checked')){
-                // console.log($(this).val())
-                arr.push($(this).val())
-            }
-        })
-        return arr
-    }
-
-    /**
      * 输出所有 drapList 列表的值
      * @param el
      * @returns {Array}
@@ -171,45 +155,19 @@
         return arr
     }
 
-
     /**
-     * 添加新行
+     * 获取自定义的数组，返回一个结果数组
+     * @param el
+     * @returns {Array}
      */
-    $('.addDrapList').each(function () {
-        $(this).click(function (e) {
-            let element = $(this).parent().parent().parent().children()
-            let len = element.length
-            if(len >= 3){
-                toggleDrapFullMessage('#drapFullMessage', '最多不能超过三行！', 1000 )
-                return false
-            } else {
-                $(this).parent().parent().parent().append($("#muban .drapContainer").clone(true))
-            }
-            e.stopPropagation()
-            draplist.UpdetaElementDrapList()
+    function mainDrapListInputVal(el) {
+        let arr = []
+        $(el).each(function () {
+            arr.push($(this).val())
         })
-    })
+        return arr
+    }
 
-    /**
-     * 删除一行
-     */
-    $('.lessDrapList').each(function () {
-        $(this).click(function (e) {
-            let element = $(this).parent().prev().children()
-            let len = element.length
-            if(len){
-                $(element).each(function () {
-                    $('#drapSumList').append($(this))
-                })
-                $(this).parent().parent().remove()
-                return false
-            }else{
-                $(this).parent().parent().remove()
-            }
-            e.stopPropagation()
-            draplist.UpdetaElementDrapList()
-        })
-    })
 
     /**
      * 删除一个元素 插入到原始列表
@@ -221,32 +179,30 @@
         })
     })
 
-
     /**
      * 测试结果
      */
     $('#test').click(function () {
-        let elMainDrapList = $('#mainDarpList li input[type=checkbox]')
 
         let elHeader = $('#header .drapContainer .drapList li span')
         let elFooter = $('#footer .drapContainer .drapList li span')
-        // let elSumList = $('#drapSumList li')
+
+        let elMainInputval = $('.mainDrapListInputVal')
+
 
         /**
          * 返回结果
          */
         console.log(
-            /**
-             * 勾选结果
-             */
-            sortingCheckedSum(elMainDrapList),
-            /**
-             * 拖拽之后的结果
-             */
             sortingListSum(elHeader),
-            sortingListSum(elFooter)
+            sortingListSum(elFooter),
+            mainDrapListInputVal(elMainInputval)
         )
+
+
     })
+
+
 
 })();
 
