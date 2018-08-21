@@ -178,7 +178,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     function mainDrapListInputVal(el) {
         var arr = [];
         $(el).each(function () {
-            arr.push($(this).val());
+            if ($(this).find('.mainDrapListInputCheck').is(':checked')) {
+                arr.push($(this).find('.mainDrapListInputVal').val());
+            }
         });
         return arr;
     }
@@ -201,7 +203,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         var elHeader = $('#header .drapContainer .drapList li span');
         var elFooter = $('#footer .drapContainer .drapList li span');
 
-        var elMainInputval = $('.mainDrapListInputVal');
+        var elMainInputval = $('#mainDarpList li');
 
         /**
          * 返回结果

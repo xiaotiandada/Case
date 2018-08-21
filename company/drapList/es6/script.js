@@ -163,7 +163,9 @@
     function mainDrapListInputVal(el) {
         let arr = []
         $(el).each(function () {
-            arr.push($(this).val())
+            if($(this).find('.mainDrapListInputCheck').is(':checked')){
+                arr.push($(this).find('.mainDrapListInputVal').val())
+            }
         })
         return arr
     }
@@ -187,7 +189,7 @@
         let elHeader = $('#header .drapContainer .drapList li span')
         let elFooter = $('#footer .drapContainer .drapList li span')
 
-        let elMainInputval = $('.mainDrapListInputVal')
+        let elMainInputval = $('#mainDarpList li')
 
 
         /**
