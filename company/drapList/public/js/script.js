@@ -1,9 +1,5 @@
 'use strict';
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
 (function () {
     'use strict';
 
@@ -55,83 +51,52 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /**
      * 设置可拖动排序列表
      */
-    (function () {
-        Sortable.create(byId('mainDarpList'), {
-            group: "mainDarpList",
-            animation: 150
-        });
 
-        Sortable.create(byId('drapSumList'), {
-            group: "words",
-            animation: 150,
-            onEnd: function onEnd(evt) {
-                statistics();
-            }
-        });
-    })();
-
-    var DrapList = function () {
-        function DrapList() {
-            _classCallCheck(this, DrapList);
-
-            /**
-             * 初始化获取元素和长度
-             * @type {jQuery|HTMLElement}
-             */
-            this.drapListElement = $('.drapList');
-            this.drapListElementLen = this.drapListElement.length;
-
-            /**
-             * 设置多个列表可互相拖动方法
-             */
-            this.setDraplist(this.drapListElement, this.drapListElementLen);
+    var sorttablesSumList = Sortable.create(byId('drapSumList'), {
+        group: "words",
+        animation: 150,
+        onEnd: function onEnd(evt) {
+            statistics();
         }
+    });
 
-        /**
-         * 设置拖动列表
-         * @param drap
-         * @param len
-         */
+    var sorttableMainList = Sortable.create(byId('mainDarpList'), {
+        group: "mainDarpList",
+        animation: 150
+    });
 
+    var drapListElement = $('.drapList');
+    var drapListElementLen = $('.drapList').length;
+    var drapStatus = false;
 
-        _createClass(DrapList, [{
-            key: 'setDraplist',
-            value: function setDraplist(drap, len) {
-                while (len--) {
-                    Sortable.create(drap[len], {
-                        group: "words",
-                        animation: 150,
-                        onEnd: function onEnd(evt) {
-                            statistics();
-                        }
-                    });
+    var setDraplist = function setDraplist(drap, len) {
+        while (len--) {
+            var sorttablelist = Sortable.create(drap[len], {
+                group: "words",
+                animation: 150,
+                onEnd: function onEnd(evt) {
+                    statistics();
                 }
-            }
+            });
 
-            /**
-             * 更新拖动列表元素和长度
-             * @constructor
-             */
+            sorttablelist.option('disabled', drapStatus);
+            console.log(sorttablelist);
+        }
+    };
 
-        }, {
-            key: 'UpdetaElementDrapList',
-            value: function UpdetaElementDrapList() {
-                this.drapListElement = $('.drapList');
-                this.drapListElementLen = this.drapListElement.length;
-                this.setDraplist(this.drapListElement, this.drapListElementLen);
-            }
-        }]);
+    setDraplist(drapListElement, drapListElementLen);
 
-        return DrapList;
-    }();
-
-    var draplist = new DrapList();
+    var UpdetaElementDrapList = function UpdetaElementDrapList() {
+        drapListElement = $('.drapList');
+        drapListElementLen = $('.drapList').length;
+        setDraplist(drapListElement, drapListElementLen);
+    };
 
     /**
      * 统计行数
      * @constructor
      */
-    function statistics() {
+    var statistics = function statistics() {
         $('.drapList').each(function () {
             var element = $(this).children();
             var len = element.length;
@@ -141,7 +106,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 return false;
             }
         });
-    }
+    };
 
     /**
      * 显示提示新信息
@@ -149,33 +114,33 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      * @param val
      * @param time
      */
-    function toggleDrapFullMessage(obj, val, time) {
+    var toggleDrapFullMessage = function toggleDrapFullMessage(obj, val, time) {
         $(obj).text(val).fadeIn(function () {
             setTimeout(function () {
                 $(obj).fadeOut();
             }, time);
         });
-    }
+    };
 
     /**
      * 输出所有 drapList 列表的值
      * @param el
      * @returns {Array}
      */
-    function sortingListSum(el) {
+    var sortingListSum = function sortingListSum(el) {
         var arr = [];
         $(el).each(function () {
             arr.push($(this).text());
         });
         return arr;
-    }
+    };
 
     /**
      * 获取自定义的数组，返回一个结果数组
      * @param el
      * @returns {Array}
      */
-    function mainDrapListInputVal(el) {
+    var mainDrapListInputVal = function mainDrapListInputVal(el) {
         var arr = [];
         $(el).each(function () {
             if ($(this).find('.mainDrapListInputCheck').is(':checked')) {
@@ -183,7 +148,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }
         });
         return arr;
-    }
+    };
 
     /**
      * 删除一个元素 插入到原始列表
@@ -209,6 +174,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
          * 返回结果
          */
         console.log(sortingListSum(elHeader), sortingListSum(elFooter), mainDrapListInputVal(elMainInputval));
+    });
+
+    $('#toggle').on('click', function () {
+        var stateMainList = sorttableMainList.option('disabled');
+        sorttableMainList.option('disabled', !stateMainList);
+
+        var stateSumList = sorttablesSumList.option('disabled');
+        sorttablesSumList.option('disabled', !stateSumList);
+        drapStatus = !drapStatus;
+        console.log(drapStatus);
+
+        UpdetaElementDrapList();
     });
 })();
 //# sourceMappingURL=script.js.map

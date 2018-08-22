@@ -3,7 +3,7 @@
 
     let byId = function (id) { return document.getElementById(id); },
 
-        loadScripts = function (desc, callback) {
+    loadScripts = function (desc, callback) {
             let deps = [], key, idx = 0;
 
             for (key in desc) {
@@ -38,85 +38,66 @@
 
         console = window.console;
 
-
-    if (!console.log) {
+        if (!console.log) {
         console.log = function () {
             alert([].join.apply(arguments, ' '));
         };
     }
 
+
+
     /**
      * 设置可拖动排序列表
      */
-    (function () {
-        Sortable.create(byId('mainDarpList'), {
-            group: "mainDarpList",
-            animation: 150
-        });
 
-        Sortable.create(byId('drapSumList'), {
-            group: "words",
-            animation: 150,
-            onEnd: function(evt){
-                statistics()
-            }
-        });
-    })()
-
-
-
-    class DrapList {
-        constructor () {
-            /**
-             * 初始化获取元素和长度
-             * @type {jQuery|HTMLElement}
-             */
-            this.drapListElement= $('.drapList')
-            this.drapListElementLen= this.drapListElement.length
-
-            /**
-             * 设置多个列表可互相拖动方法
-             */
-            this.setDraplist(this.drapListElement, this.drapListElementLen)
-
+    let sorttablesSumList = Sortable.create(byId('drapSumList'), {
+        group: "words",
+        animation: 150,
+        onEnd: function(evt){
+            statistics()
         }
+    });
 
-        /**
-         * 设置拖动列表
-         * @param drap
-         * @param len
-         */
-        setDraplist(drap, len) {
-            while (len--){
-                Sortable.create(drap[len], {
-                    group: "words",
-                    animation: 150,
-                    onEnd: function(evt){
-                        statistics()
-                    }
-                });
+    let sorttableMainList = Sortable.create(byId('mainDarpList'), {
+        group: "mainDarpList",
+        animation: 150
+    });
 
-            }
-        }
+    let drapListElement = $('.drapList')
+    let drapListElementLen=  $('.drapList').length
+    let drapStatus = false
 
-        /**
-         * 更新拖动列表元素和长度
-         * @constructor
-         */
-        UpdetaElementDrapList(){
-            this.drapListElement = $('.drapList')
-            this.drapListElementLen =  this.drapListElement.length
-            this.setDraplist(this.drapListElement, this.drapListElementLen)
+    let setDraplist = function(drap, len) {
+        while (len--){
+            let sorttablelist = Sortable.create(drap[len], {
+                group: "words",
+                animation: 150,
+                onEnd: function(evt){
+                    statistics()
+                }
+            });
+
+
+            sorttablelist.option('disabled', drapStatus)
+            console.log(sorttablelist)
+
         }
     }
-    let draplist = new DrapList()
+
+    setDraplist(drapListElement, drapListElementLen)
+
+    let UpdetaElementDrapList = function(){
+        drapListElement = $('.drapList')
+        drapListElementLen =  $('.drapList').length
+        setDraplist(drapListElement, drapListElementLen)
+    }
 
 
     /**
      * 统计行数
      * @constructor
      */
-    function statistics() {
+    let statistics = function () {
         $('.drapList').each(function () {
             let element = $(this).children()
             let len = element.length
@@ -134,7 +115,7 @@
      * @param val
      * @param time
      */
-    function toggleDrapFullMessage(obj, val, time) {
+    let toggleDrapFullMessage = function (obj, val, time) {
         $(obj).text(val).fadeIn(function () {
             setTimeout(function () {
                 $(obj).fadeOut()
@@ -147,7 +128,7 @@
      * @param el
      * @returns {Array}
      */
-    function sortingListSum(el) {
+    let sortingListSum = function (el) {
         let arr = []
         $(el).each(function () {
             arr.push($(this).text())
@@ -160,7 +141,7 @@
      * @param el
      * @returns {Array}
      */
-    function mainDrapListInputVal(el) {
+    let mainDrapListInputVal = function (el) {
         let arr = []
         $(el).each(function () {
             if($(this).find('.mainDrapListInputCheck').is(':checked')){
@@ -201,10 +182,19 @@
             mainDrapListInputVal(elMainInputval)
         )
 
-
     })
 
+    $('#toggle').on('click', function () {
+        let stateMainList = sorttableMainList.option('disabled')
+        sorttableMainList.option('disabled', !stateMainList)
 
+        let stateSumList = sorttablesSumList.option('disabled')
+        sorttablesSumList.option('disabled', !stateSumList)
+        drapStatus= !drapStatus
+        console.log(drapStatus)
+
+        UpdetaElementDrapList()
+    })
 
 })();
 
