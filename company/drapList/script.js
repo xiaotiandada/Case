@@ -134,7 +134,7 @@
             var element = $(this).children();
             var len = element.length;
             if (len > 3) {
-                toggleDrapFullMessage('#drapFullMessage', '一行最多放置三个，请添加新列或者放置下一列！', 1000);
+                toggleDrapFullMessage('#drapFullMessage', '一行最多放置三个,请放置下一列！', 1000);
 
                 if(sorttablePath.index === 0 ){
                     $(sorttablePath.path).prepend($(sorttablePath.el));
@@ -193,48 +193,37 @@
     /**
      * 删除一个元素 插入到原始列表
      */
-    var closeButton = function closeButton(){
-        $('.drapcloseA').each(function () {
-            $(this).click(function (e) {
-                $('#drapSumList').append($(this).parent());
-                e.stopPropagation();
-            });
-        });
-
-        $('.drapDetailclose').each(function () {
-            $(this).click(function (e) {
-                $('#drapFormList').append($(this).parent());
-                e.stopPropagation();
-            });
-        });
-    }
+    // var closeButton = function closeButton(){
+    //     $('.drapcloseA').each(function () {
+    //         $(this).click(function (e) {
+    //             $('#drapSumList').append($(this).parent());
+    //             e.stopPropagation();
+    //         });
+    //     });
+    //
+    //     $('.drapDetailclose').each(function () {
+    //         $(this).click(function (e) {
+    //             $('#drapFormList').append($(this).parent());
+    //             e.stopPropagation();
+    //         });
+    //     });
+    // }
 
 
     /**
      * 测试结果
      */
-    $('#test').click(function () {
+    // $('#test').click(function () {
+    //
+    //     var elHeader = $('#header .drapContainer .drapList li span');
+    //     var elFooter = $('#footer .drapContainer .drapList li span');
+    //
+    //     var elMainInputval = $('#mainDarpList li');
+    //
+    //     /**
+    //      * 返回结果
+    //      */
+    //     console.log(sortingListSum(elHeader), sortingListSum(elFooter), mainDrapListInputVal(elMainInputval));
+    // });
 
-        var elHeader = $('#header .drapContainer .drapList li span');
-        var elFooter = $('#footer .drapContainer .drapList li span');
-
-        var elMainInputval = $('#mainDarpList li');
-
-        /**
-         * 返回结果
-         */
-        console.log(sortingListSum(elHeader), sortingListSum(elFooter), mainDrapListInputVal(elMainInputval));
-    });
-
-    $('#toggle').on('click', function () {
-        var stateMainList = sorttableMainList.option('disabled');
-        sorttableMainList.option('disabled', !stateMainList);
-
-        var stateSumList = sorttablesSumList.option('disabled');
-        sorttablesSumList.option('disabled', !stateSumList);
-        drapStatus = !drapStatus;
-        console.log(drapStatus);
-
-        UpdetaElementDrapList();
-    });
 })();
