@@ -1,6 +1,5 @@
 .searchContainer{
-  margin: 100px 200px 0;
-  padding: 20px;
+
 }
 
 .searchContent{
@@ -13,6 +12,8 @@
   position: relative;
   z-index: 1;
 
+  padding-right: 20px;
+
 
   .searchInput{
     width: 100%;
@@ -22,6 +23,7 @@
     border-radius: 3px;
     font-size: 14px;
     caret-color: #999;
+    background: transparent;
 
     &:focus + .searchInputLabel {
       border-color: #009bff;
@@ -33,7 +35,7 @@
     right: 0;
     bottom: 0;
     left: 0;
-    //z-index: -1;
+    z-index: -1;
     border: 1px solid #989898;
   }
 
@@ -47,6 +49,7 @@
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+  display: none;
   ul{
     margin: 0;
     padding: 0;

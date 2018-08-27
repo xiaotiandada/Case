@@ -1,82 +1,111 @@
 (function () {
 
-    let json = [{
-        a: 111,
-        b: 222,
-        c: 333
-    },
-        {
-            a: 123,
-            b: 222,
-            c: 333
-        },
-        {
-            a: 222,
-            b: 222,
-            c: 333
-        }
-    ]
+    /**
+     * 打印输出方法
+     * @param val
+     */
+    let searchConLog = function (val) {
+        console.log(val)
+    }
 
-    let query = {
-             "a": "aaa",
-             "b": "bbb",
-             "c": "ccc"
-         }
-
-    let filterJson = json.filter(function(json){
-        for(let key of Object.keys(json)){
-            console.log(key)
-        }
-        return true
-    })
-
-
-
-
-
+    /**
+     * 搜索完成方法
+     * @param value
+     */
     let searchDoneFun = function (value){
         let searchListVal = $('#searchListVal')
-        searchListVal.empty()
-        console.log(value)
-        for(let i = 0;i <value.length;i++){
+        let el =''
+        for(let i = 0; i < value.length;i++){
             for(let key of Object.keys(value[i])) {
-                searchListVal.append(`<li title=${key}><a href="javascript:;">${value[i][key]}</a></li>`)
+               el += `<li><a href="javascript:;">${value[i][key]}</a></li>`
             }
+        }
+        searchListVal.html(el)
+
+        // 循环绑定单击事件
+        $('#searchListVal li a').each(function () {
+            $(this).click(function () {
+                $('#searchInput').val($(this).text())
+                // 单击选择之后是否调用ajax方法
+                // watchSearchFun($(this).text())
+                searchConLog($(this).text())
+                $('#searchList').hide()
+            })
+        })
+
+    }
+
+    /**
+     * 是否显示列表方法
+     * @returns {boolean}
+     */
+    let isSearchListShow = function isSearchListShow () {
+        let len = $('#searchListVal li').length
+        if(len === 0){
+            $('#searchList').hide()
+            return false
+        } else {
+            $('#searchList').show()
+        }
+    }
+
+
+
+    /**
+     * ajax方法
+     * @param data
+     */
+    let jqAjax = function (data){
+        let url = 'http://yapi.demo.qunar.com/mock/16916/search/qeury'
+        $.ajax({
+            url: url,
+            type: 'GET',
+            data: data,
+            dataType: 'json'
+        }).done(function (data) {
+            // 成功
+            searchDoneFun(data)
+        }).fail(function (xhr, status) {
+            // 失败
+            console.log(xhr.status, status)
+        }).always(function () {
+            // 总会
+        })
+    }
+    jqAjax()
+
+    /**
+     * 监听搜索内容方法
+     */
+    let watchSearchFun = function (inputVal) {
+        let val = _.trim(inputVal)
+        // 调用打印输出方法
+        searchConLog(val)
+        if(val===''){
+            // 输入框没有值是否清空
+            // $('#searchListVal').empty()
+            isSearchListShow()
+            return false
+        } else {
+            jqAjax(val)
         }
 
     }
 
-    let watchSearchFun = function () {
-        let val = _.lowerCase($(this).val())
-        let arr = val.split(' ')
-        console.log(arr)
-        val = `?a=${arr[0]}&b=${arr[1]}&c=${arr[2]}`
-        console.log(val)
-        jqAjax(val)
-    }
 
-    let searchClearFun = function () {
-        $('#searchListVal').empty()
-    }
-
-    let jqAjax = function (key){
-        let url = 'https://www.easy-mock.com/mock/5b7b7d1ba491c55eb2201526/search/query'
-        $.ajax({
-            url: url + key,
-            type: 'get',
-            dataType: 'json'
-        }).done(function (data) {
-            // console.log('成功' + JSON.stringify(data))
-            let dataJson = data.data
-            searchDoneFun(dataJson)
-        }).fail(function (xhr, status) {
-            console.log(xhr.status, status)
-            searchClearFun()
-        }).always(function () {
-            console.log('总会调用')
-        })
-    }
-
-    $('#searchInput').bind('input propertychange', _.debounce(watchSearchFun, 700))
+    // 监听内容改变执行事件
+    $('#searchInput').bind('input propertychange', _.debounce(function () {
+        watchSearchFun($(this).val())
+    }, 700))
+    // 鼠标聚焦执行事件
+    $('#searchInput').focus(function () {
+        isSearchListShow()
+    })
+    // 鼠标失焦执行事件
+    $('#searchInput').blur(function () {
+        setTimeout(function () {
+            $('#searchList').hide()
+        },300)
+    })
 
 })()

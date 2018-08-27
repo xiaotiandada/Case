@@ -1,119 +1,129 @@
-"use strict";
+'use strict';
 
 (function () {
 
-    var json = [{
-        a: 111,
-        b: 222,
-        c: 333
-    }, {
-        a: 123,
-        b: 222,
-        c: 333
-    }, {
-        a: 222,
-        b: 222,
-        c: 333
-    }];
-
-    var query = {
-        "a": "aaa",
-        "b": "bbb",
-        "c": "ccc"
+    /**
+     * 打印输出方法
+     * @param val
+     */
+    var searchConLog = function searchConLog(val) {
+        console.log(val);
     };
 
-    var filterJson = json.filter(function (json) {
-        var _iteratorNormalCompletion = true;
-        var _didIteratorError = false;
-        var _iteratorError = undefined;
-
-        try {
-            for (var _iterator = Object.keys(json)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                var key = _step.value;
-
-                console.log(key);
-            }
-        } catch (err) {
-            _didIteratorError = true;
-            _iteratorError = err;
-        } finally {
-            try {
-                if (!_iteratorNormalCompletion && _iterator.return) {
-                    _iterator.return();
-                }
-            } finally {
-                if (_didIteratorError) {
-                    throw _iteratorError;
-                }
-            }
-        }
-
-        return true;
-    });
-
+    /**
+     * 搜索完成方法
+     * @param value
+     */
     var searchDoneFun = function searchDoneFun(value) {
         var searchListVal = $('#searchListVal');
-        searchListVal.empty();
-        console.log(value);
+        var el = '';
         for (var i = 0; i < value.length; i++) {
-            var _iteratorNormalCompletion2 = true;
-            var _didIteratorError2 = false;
-            var _iteratorError2 = undefined;
+            var _iteratorNormalCompletion = true;
+            var _didIteratorError = false;
+            var _iteratorError = undefined;
 
             try {
-                for (var _iterator2 = Object.keys(value[i])[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-                    var key = _step2.value;
+                for (var _iterator = Object.keys(value[i])[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                    var key = _step.value;
 
-                    searchListVal.append("<li title=" + key + "><a href=\"javascript:;\">" + value[i][key] + "</a></li>");
+                    el += '<li><a href="javascript:;">' + value[i][key] + '</a></li>';
                 }
             } catch (err) {
-                _didIteratorError2 = true;
-                _iteratorError2 = err;
+                _didIteratorError = true;
+                _iteratorError = err;
             } finally {
                 try {
-                    if (!_iteratorNormalCompletion2 && _iterator2.return) {
-                        _iterator2.return();
+                    if (!_iteratorNormalCompletion && _iterator.return) {
+                        _iterator.return();
                     }
                 } finally {
-                    if (_didIteratorError2) {
-                        throw _iteratorError2;
+                    if (_didIteratorError) {
+                        throw _iteratorError;
                     }
                 }
             }
         }
-    };
+        searchListVal.html(el);
 
-    var watchSearchFun = function watchSearchFun() {
-        var val = _.lowerCase($(this).val());
-        var arr = val.split(' ');
-        console.log(arr);
-        val = "?a=" + arr[0] + "&b=" + arr[1] + "&c=" + arr[2];
-        console.log(val);
-        jqAjax(val);
-    };
-
-    var searchClearFun = function searchClearFun() {
-        $('#searchListVal').empty();
-    };
-
-    var jqAjax = function jqAjax(key) {
-        var url = 'https://www.easy-mock.com/mock/5b7b7d1ba491c55eb2201526/search/query';
-        $.ajax({
-            url: url + key,
-            type: 'get',
-            dataType: 'json'
-        }).done(function (data) {
-            // console.log('成功' + JSON.stringify(data))
-            var dataJson = data.data;
-            searchDoneFun(dataJson);
-        }).fail(function (xhr, status) {
-            console.log(xhr.status, status);
-            searchClearFun();
-        }).always(function () {
-            console.log('总会调用');
+        // 循环绑定单击事件
+        $('#searchListVal li a').each(function () {
+            $(this).click(function () {
+                $('#searchInput').val($(this).text());
+                // 单击选择之后是否调用ajax方法
+                // watchSearchFun($(this).text())
+                searchConLog($(this).text());
+                $('#searchList').hide();
+            });
         });
     };
 
-    $('#searchInput').bind('input propertychange', _.debounce(watchSearchFun, 700));
+    /**
+     * 是否显示列表方法
+     * @returns {boolean}
+     */
+    var isSearchListShow = function isSearchListShow() {
+        var len = $('#searchListVal li').length;
+        if (len === 0) {
+            $('#searchList').hide();
+            return false;
+        } else {
+            $('#searchList').show();
+        }
+    };
+
+    /**
+     * ajax方法
+     * @param data
+     */
+    var jqAjax = function jqAjax(data) {
+        var url = 'http://yapi.demo.qunar.com/mock/16916/search/qeury';
+        $.ajax({
+            url: url,
+            type: 'GET',
+            data: data,
+            dataType: 'json'
+        }).done(function (data) {
+            // 成功
+            searchDoneFun(data);
+        }).fail(function (xhr, status) {
+            // 失败
+            console.log(xhr.status, status);
+        }).always(function () {
+            // 总会
+        });
+    };
+    jqAjax();
+
+    /**
+     * 监听搜索内容方法
+     */
+    var watchSearchFun = function watchSearchFun(inputVal) {
+        var val = _.trim(inputVal);
+        // 调用打印输出方法
+        searchConLog(val);
+        if (val === '') {
+            // 输入框没有值是否清空
+            // $('#searchListVal').empty()
+            isSearchListShow();
+            return false;
+        } else {
+            jqAjax(val);
+        }
+    };
+
+    // 监听内容改变执行事件
+    $('#searchInput').bind('input propertychange', _.debounce(function () {
+        watchSearchFun($(this).val());
+    }, 700));
+    // 鼠标聚焦执行事件
+    $('#searchInput').focus(function () {
+        isSearchListShow();
+    });
+    // 鼠标失焦执行事件
+    $('#searchInput').blur(function () {
+        setTimeout(function () {
+            $('#searchList').hide();
+        }, 300);
+    });
 })();
 //# sourceMappingURL=script.js.map
