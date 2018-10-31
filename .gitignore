@@ -46,9 +46,5 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-node_modules/
-/node_modules/
-/bower_components/
-/jq后台管理/node_modules/
-/jq后台管理/lib/
+node_modules
 .idea
