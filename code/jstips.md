@@ -95,3 +95,54 @@ Object.is(?,?)
 ```
 
 > http://www.jstips.co/en/javascript/looping-over-arrays/
+
+### Array 的三个技巧
+
+> 在 JavaScript 中 数组（Array）随处可见，使用 ECMAScript 6 中的新特性 扩展运算符 你可以做很多很棒事情。在这边文章中，我将为你介绍在编码中有用的 3 个技巧。
+
+```js
+// 1. 迭代一个空数组
+
+{
+  const arr = new Array(4);
+  [undefined, undefined, undefined, undefined];
+}
+{
+  const arr = new Array(4);
+  arr.map((elem, index) => index);
+  [undefined, undefined, undefined, undefined];
+}
+
+{
+  // 创建新数组的时候使用 Array.apply。
+  const arr = Array.apply(null, new Array(4));
+  arr.map((elem, index) => index);
+  [0, 1, 2, 3];
+}
+
+// 2. 给方法传一个空参数
+
+{
+  method('parameter1', , 'parameter3');
+// Uncaught SyntaxError: Unexpected token ,
+}
+
+{
+  // 一个人们常用的解决方法是传递 null 或 undefined.
+  method('parameter1', null, 'parameter3') // or
+  method('parameter1', undefined, 'parameter3');
+}
+
+{
+  // 根据 ES6 中对扩展运算符的介绍，有一个更简洁的方法可以将空参数传递给一个方法。
+  method(...['parameter1', , 'parameter3']); // works!
+}
+
+{
+  // 数组去重
+  const arr = [...new Set([1, 2, 3, 3])];
+  [1, 2, 3]
+}
+```
+
+> http://www.jstips.co/zh_cn/javascript/3-array-hacks/
