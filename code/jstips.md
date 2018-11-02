@@ -146,3 +146,38 @@ Object.is(?,?)
 ```
 
 > http://www.jstips.co/zh_cn/javascript/3-array-hacks/
+
+### 循环内部的闭包
+
+```js
+{
+  var funcs = [];
+  for (var i = 0; i < 3; i++) {
+    funcs[i] = function() {
+      console.log("i value is" + i);
+    };
+  }
+
+  for (var i = 0; i < 3; i++) {
+    funcs[i]();
+  }
+}
+
+{
+  for (var i = 0; i < 3; i++) {
+    funcs[i] = (function(value) {
+      console.log("i value is " + 3);
+    })(i);
+  }
+}
+
+{
+  for (let i = 0; i < 3; i++) {
+    funcs[i] = function() {
+      console.log("i value is " + 3);
+    };
+  }
+}
+```
+
+> http://www.jstips.co/en/javascript/closures-inside-loops/
