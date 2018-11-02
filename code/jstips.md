@@ -181,3 +181,41 @@ Object.is(?,?)
 ```
 
 > http://www.jstips.co/en/javascript/closures-inside-loops/
+
+### 哈希映射没有副作用
+
+> 如果要将 javascript 对象用作哈希映射（纯粹用于存储数据），则可能需要按如下方式创建它。
+
+```js
+ const map = Object.create(null);
+
+//  使用object literal（const map = {}）创建地图时，默认情况下，地图会从Object继承属性。它相当于Object.create(Object.prototype)。
+
+// 但通过这样做Object.create(null)，我们明确指定null为其原型。因此它绝对没有属性，甚至没有构造函数，toString，hasOwnProperty等等。因此，如果需要，您可以在数据结构中自由使用这些键。
+
+const dirtyMap = {};
+const cleanMap = Object.create(null);
+
+dirtyMap.constructor    // function Object() { [native code] }
+
+cleanMap.constructor    // undefined
+
+// Iterating maps
+
+const key;
+for(key in dirtyMap){
+  if (dirtyMap.hasOwnProperty(key)) {   // Check to avoid iterating over inherited properties.
+    console.log(key + " -> " + dirtyMap[key]);
+  }
+}
+
+for(key in cleanMap){
+  console.log(key + " -> " + cleanMap[key]);    // No need to add extra checks, as the object will always be clean
+}
+```
+
+<!-- Notes: -->
+<!-- Object.create() was introduced in ES5: Compatibility -->
+<!-- ES6 introduced some new structures: Map, WeakMap, Set and Weak Set -->
+
+> http://www.jstips.co/en/javascript/hash-maps-without-side-effects/
