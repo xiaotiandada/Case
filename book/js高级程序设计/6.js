@@ -124,22 +124,92 @@
     console.log(this.name);
   }
 
-  var person1 = new Person()
-  person1.sayName()
+  // var person1 = new Person()
+  // person1.sayName()
 
-  var person2 = new Person()
-  person2.sayName()
+  // var person2 = new Person()
+  // person2.sayName()
 
-  person1.name = 'lei'
-  person1.sayName()
-  person2.sayName()
+  // person1.name = 'lei'
+  // person1.sayName()
+  // person2.sayName()
 
 
 
-  console.log(person1.hasOwnProperty('name'))
-  console.log(person2.hasOwnProperty('name'))
+  // console.log(person1.hasOwnProperty('name'))
+  // console.log(person2.hasOwnProperty('name'))
 
-  delete person1.name
-  person1.sayName()
-  person2.sayName()
+  // delete person1.name
+  // person1.sayName()
+  // person2.sayName()
+
+  // function hasPrototypeProperty(object, name) {
+  //   return !object.hasOwnProperty(name) && (name in object)
+  // }
+
+  // console.log(hasPrototypeProperty(person1, 'name'));
+  // person1.name = 'lei'
+  // console.log(hasPrototypeProperty(person1, 'name'));
+
+  // var keys = Object.keys(Person.prototype)
+  // console.log(keys);
+  // console.log(Object.getOwnPropertyNames(Person.prototype));
+  // person1.name = 'lei'
+  // person1.age = 19
+  // console.log(Object.keys(person1));
+  // console.log(Object.getOwnPropertyNames(person1));
+
+}
+
+{
+  function Person(){}
+  Person.prototype= {
+    name: 'xiao',
+    age: 19,
+    sayName: function(){
+      console.log(this.name);
+    }
+  }
+
+  // var person = new Person()
+  // console.log(person instanceof Person);
+  // console.log(person instanceof Object);
+  // console.log(person.constructor == Person);
+  // console.log(person.constructor == Object);
+}
+
+{
+  function Person(){}
+  Person.prototype= {
+    constructor: Person,
+    name: 'xiao',
+    age: 19,
+    sayName: function(){
+      console.log(this.name);
+    }
+  }
+
+  // var person = new Person()
+  // console.log(person instanceof Person);
+  // console.log(person instanceof Object);
+  // console.log(person.constructor == Person);
+  // console.log(person.constructor == Object);
+}
+
+{
+  function Person(){}
+  Person.prototype= {
+    constructor: Person,
+    name: 'xiao',
+    age: 19,
+    sayName: function(){
+      console.log(this.name);
+    }
+  }
+
+  var person = new Person()
+  Object.defineProperty(Person.prototype, 'constructor', {
+    enumerable: false,
+    value: Person
+  })
 }
