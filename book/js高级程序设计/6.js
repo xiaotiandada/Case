@@ -213,3 +213,31 @@
     value: Person
   })
 }
+
+{
+  function Person(){}
+  Person.prototype.arr = ['1','2','3']
+  var person1 = new Person()
+  var person2 = new Person()
+  // person1.arr.push('4')
+  // console.log(person1.arr)
+  // console.log(person2.arr)
+}
+
+{
+  function Person(name){
+    this.name = name
+  }
+  Person.prototype = {
+    constructor: Person,
+    sayName : function(){
+      console.log(this.name)
+    }
+  }
+
+  var person1 = new Person('xiao')
+  var person2 = new Person('lei')
+
+  console.log(person1.name == person2.name)
+  console.log(person1.sayName == person2.sayName);
+}
