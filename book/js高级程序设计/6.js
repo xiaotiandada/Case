@@ -255,5 +255,21 @@
   }
 
   var person1 = new Person('xiao')
-  person1.sayName()
+  // person1.sayName()
+}
+
+{
+  function SpecialArray(){
+    var values = new Array()
+
+    values.push.apply(values, arguments)
+
+    values.toPiedString = function(){
+      return this.join('|')
+    }
+    return values
+  }
+
+  var colors = new SpecialArray('yellow', 'red','green')
+  // console.log(colors.toPiedString());
 }
