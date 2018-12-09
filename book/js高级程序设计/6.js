@@ -238,6 +238,22 @@
   var person1 = new Person('xiao')
   var person2 = new Person('lei')
 
-  console.log(person1.name == person2.name)
-  console.log(person1.sayName == person2.sayName);
+  // console.log(person1.name == person2.name)
+  // console.log(person1.sayName == person2.sayName);
+  // console.log(person1.constructor == person2.constructor);
+  // console.log(person1.constructor == Person);
+}
+
+{
+  function Person(name) {
+    this.name = name
+  }
+  if (typeof this.sayName != 'function') {
+    Person.prototype.sayName = function(){
+      console.log(this.name);
+    }
+  }
+
+  var person1 = new Person('xiao')
+  person1.sayName()
 }
