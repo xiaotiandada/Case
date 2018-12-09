@@ -273,3 +273,15 @@
   var colors = new SpecialArray('yellow', 'red','green')
   // console.log(colors.toPiedString());
 }
+
+{
+  function Person(name){
+    var o = new Object()
+    o.sayName = function(){
+      console.log(name);
+    }
+    return o
+  }
+  var person1 = Person('xioa')
+  person1.sayName()
+}
