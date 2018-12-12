@@ -306,6 +306,32 @@
   }
 
   var instance = new SubType()
-  console.log(instance.getSuperValue())
-  console.log(instance.getSubValue())
+  // console.log(instance.getSuperValue())
+  // console.log(instance.getSubValue())
+
+  // console.log(instance instanceof Object);
+  // console.log(instance instanceof SubType);
+  // console.log(instance instanceof SuperType);
+
+
+  // console.log(Object.prototype.isPrototypeOf(instance));
+  // console.log(SubType.prototype.isPrototypeOf(instance));
+  // console.log(SuperType.prototype.isPrototypeOf(instance));
+}
+
+{
+  function SuperType(){
+    this.colors = ['red','yeelow']
+  }
+
+  function SubType(){}
+
+  SubType.prototype = new SuperType()
+
+  var instance1 = new SubType()
+  instance1.colors.push('green')
+  // console.log(instance1.colors);
+
+  var instance2 = new SubType()
+  // console.log(instance2.colors);
 }
