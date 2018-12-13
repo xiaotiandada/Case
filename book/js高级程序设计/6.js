@@ -335,3 +335,54 @@
   var instance2 = new SubType()
   // console.log(instance2.colors);
 }
+
+{
+  function SuperType(name){
+    this.name = name
+  }
+  
+  function SubType(){
+    SuperType.call(this, 'xiao')
+    this.age = 19
+  }
+
+  var instance = new SubType()
+  // console.log(instance.name)
+  // console.log(instance.age)
+}
+
+{
+  function SuperType(name){
+    this.name = name
+    this.colors = ['red','yellow']
+  }
+
+  SuperType.prototype.sayName = function(){
+    console.log(this.name);
+  }
+
+  function SubType(name, age){
+    SuperType.call(this, name)
+    this.age = age
+  }
+
+  SubType.prototype = new SuperType()
+  SubType.prototype.constructor = SuperType
+
+  SubType.prototype.sayAge = function(){
+    console.log(this.age);
+  }
+
+  var instance = new SubType('xiao', 19)
+  instance.colors.push('green')
+  instance.sayName()
+  instance.sayAge()
+  console.log(instance.colors)
+
+
+  var instance2 = new SubType('lei', 20)
+ instance2.sayName()
+ instance2.sayAge()
+  console.log(instance2.colors);
+
+}
