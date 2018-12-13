@@ -373,16 +373,81 @@
     console.log(this.age);
   }
 
-  var instance = new SubType('xiao', 19)
-  instance.colors.push('green')
-  instance.sayName()
-  instance.sayAge()
-  console.log(instance.colors)
+//   var instance = new SubType('xiao', 19)
+//   instance.colors.push('green')
+//   instance.sayName()
+//   instance.sayAge()
+//   console.log(instance.colors)
 
 
-  var instance2 = new SubType('lei', 20)
- instance2.sayName()
- instance2.sayAge()
-  console.log(instance2.colors);
+//   var instance2 = new SubType('lei', 20)
+//  instance2.sayName()
+//  instance2.sayAge()
+//   console.log(instance2.colors);
 
+}
+
+{
+  function object(o){
+    function F(){}
+    F.prototype = o
+    return new F()
+  }
+
+  var person = {
+    name: 'xiao',
+    colors: ['red','yellow']
+  }
+
+  // var instance = object(person)
+  // instance.name = 'lei'
+  // instance.colors.push('green')
+  // console.log(person.name);
+  // var instance2 = object(person)
+  // instance2.name = '12'
+  // instance2.colors.push('gary')
+  // console.log(person.name);
+  // console.log(person.colors);
+}
+
+{
+  function object(o){
+    function F(){}
+    F.prototype = o
+    return new F()
+  }
+
+  var person = {
+    name: 'xiao',
+    colors: ['red','yellow']
+  }
+
+  // var instance = Object.create(person)
+  // instance.name = 'lei'
+  // instance.colors.push('green')
+  // console.log(person.name);
+  // var instance2 = object(person)
+  // instance2.name = '12'
+  // instance2.colors.push('gary')
+  // console.log(person.name);
+  // console.log(person.colors);
+}
+
+{
+  var person = {
+    name: 'xiao',
+    color: ['red', 'yellow']
+  }
+
+  var instance = Object.create(person, {
+    name: {
+      value : 'xiao'
+    }
+  })
+
+  // console.log(instance.name);
+}
+
+{
+  
 }
