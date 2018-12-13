@@ -449,5 +449,19 @@
 }
 
 {
-  
+  function createAnother(original){
+    var clone = Object.create(original)
+    clone.sayHi = function(){
+      console.log('hi');
+    }
+    return clone
+  }
+
+  var person = {
+    name: 'xiao'
+  }
+
+  var instance = createAnother(person)
+  instance.sayHi()
+  console.log(instance.name);
 }
