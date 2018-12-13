@@ -462,6 +462,44 @@
   }
 
   var instance = createAnother(person)
-  instance.sayHi()
+  // instance.sayHi()
+  // console.log(instance.name);
+}
+
+{
+  function inheritPrototype (SubType, SuperType){
+    var clone = Object.create(SuperType.prototype)
+    clone.constructor = SubType
+    SubType.prototype = clone
+  }
+
+  function SuperType(name){
+    this.name = name
+  }
+  SuperType.prototype.sayName = function(){
+    console.log(this.name);
+  }
+
+  function SubType(name, age){
+    SuperType.call(this, name)
+    this.age = age
+  }
+  // SubType.prototype = new SuperType()
+
+  inheritPrototype(SubType, SuperType)
+
+ SubType.prototype.sayAge =  function(){
+    console.log(this.age);
+  }
+
+  SubType.prototype.test = 'test';
+
+
+  var instance = new SubType('xiao', 19)
+  instance.sayName()
   console.log(instance.name);
+  console.log(instance.age);
+  console.log(instance.test);
+  instance.sayAge()
+
 }
