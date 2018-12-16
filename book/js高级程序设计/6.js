@@ -15,11 +15,11 @@
   };
 
   Object.defineProperty(book, "year", {
-    get: function() {
+    get: function () {
       return this._year;
     },
 
-    set: function(newValue) {
+    set: function (newValue) {
       if (newValue > 2004) {
         this._year = newValue;
         this.edition += newValue - 2004;
@@ -40,7 +40,7 @@
     o.name = name;
     o.age = age;
     o.job = job;
-    o.sayName = function() {
+    o.sayName = function () {
       console.log(this.name);
     };
     return o;
@@ -60,7 +60,7 @@
     this.name = name;
     this.age = age;
     this.job = job;
-    this.sayName = function() {
+    this.sayName = function () {
       console.log(this.name);
     };
   }
@@ -117,12 +117,12 @@
 
 {
   // 原型模式
-  function Person(){}
+  function Person() {}
   Person.prototype.name = 'xiao',
-  Person.prototype.age = 19,
-  Person.prototype.sayName = function(){
-    console.log(this.name);
-  }
+    Person.prototype.age = 19,
+    Person.prototype.sayName = function () {
+      console.log(this.name);
+    }
 
   // var person1 = new Person()
   // person1.sayName()
@@ -162,11 +162,11 @@
 }
 
 {
-  function Person(){}
-  Person.prototype= {
+  function Person() {}
+  Person.prototype = {
     name: 'xiao',
     age: 19,
-    sayName: function(){
+    sayName: function () {
       console.log(this.name);
     }
   }
@@ -179,12 +179,12 @@
 }
 
 {
-  function Person(){}
-  Person.prototype= {
+  function Person() {}
+  Person.prototype = {
     constructor: Person,
     name: 'xiao',
     age: 19,
-    sayName: function(){
+    sayName: function () {
       console.log(this.name);
     }
   }
@@ -197,12 +197,12 @@
 }
 
 {
-  function Person(){}
-  Person.prototype= {
+  function Person() {}
+  Person.prototype = {
     constructor: Person,
     name: 'xiao',
     age: 19,
-    sayName: function(){
+    sayName: function () {
       console.log(this.name);
     }
   }
@@ -215,8 +215,8 @@
 }
 
 {
-  function Person(){}
-  Person.prototype.arr = ['1','2','3']
+  function Person() {}
+  Person.prototype.arr = ['1', '2', '3']
   var person1 = new Person()
   var person2 = new Person()
   // person1.arr.push('4')
@@ -225,12 +225,12 @@
 }
 
 {
-  function Person(name){
+  function Person(name) {
     this.name = name
   }
   Person.prototype = {
     constructor: Person,
-    sayName : function(){
+    sayName: function () {
       console.log(this.name)
     }
   }
@@ -249,7 +249,7 @@
     this.name = name
   }
   if (typeof this.sayName != 'function') {
-    Person.prototype.sayName = function(){
+    Person.prototype.sayName = function () {
       console.log(this.name);
     }
   }
@@ -259,25 +259,25 @@
 }
 
 {
-  function SpecialArray(){
+  function SpecialArray() {
     var values = new Array()
 
     values.push.apply(values, arguments)
 
-    values.toPiedString = function(){
+    values.toPiedString = function () {
       return this.join('|')
     }
     return values
   }
 
-  var colors = new SpecialArray('yellow', 'red','green')
+  var colors = new SpecialArray('yellow', 'red', 'green')
   // console.log(colors.toPiedString());
 }
 
 {
-  function Person(name){
+  function Person(name) {
     var o = new Object()
-    o.sayName = function(){
+    o.sayName = function () {
       console.log(name);
     }
     return o
@@ -287,21 +287,21 @@
 }
 
 {
-  function SuperType(){
+  function SuperType() {
     this.property = true
   }
-  SuperType.prototype.getSuperValue = function(){
+  SuperType.prototype.getSuperValue = function () {
     return this.property
   }
 
-  function SubType (){
+  function SubType() {
     this.subproperty = false
-  } 
+  }
 
   // 继承了
   SubType.prototype = new SuperType()
 
-  SubType.prototype.getSubValue = function(){
+  SubType.prototype.getSubValue = function () {
     return this.subproperty
   }
 
@@ -320,11 +320,11 @@
 }
 
 {
-  function SuperType(){
-    this.colors = ['red','yeelow']
+  function SuperType() {
+    this.colors = ['red', 'yeelow']
   }
 
-  function SubType(){}
+  function SubType() {}
 
   SubType.prototype = new SuperType()
 
@@ -337,11 +337,11 @@
 }
 
 {
-  function SuperType(name){
+  function SuperType(name) {
     this.name = name
   }
-  
-  function SubType(){
+
+  function SubType() {
     SuperType.call(this, 'xiao')
     this.age = 19
   }
@@ -352,16 +352,16 @@
 }
 
 {
-  function SuperType(name){
+  function SuperType(name) {
     this.name = name
-    this.colors = ['red','yellow']
+    this.colors = ['red', 'yellow']
   }
 
-  SuperType.prototype.sayName = function(){
+  SuperType.prototype.sayName = function () {
     console.log(this.name);
   }
 
-  function SubType(name, age){
+  function SubType(name, age) {
     SuperType.call(this, name)
     this.age = age
   }
@@ -369,34 +369,34 @@
   SubType.prototype = new SuperType()
   SubType.prototype.constructor = SuperType
 
-  SubType.prototype.sayAge = function(){
+  SubType.prototype.sayAge = function () {
     console.log(this.age);
   }
 
-//   var instance = new SubType('xiao', 19)
-//   instance.colors.push('green')
-//   instance.sayName()
-//   instance.sayAge()
-//   console.log(instance.colors)
+  //   var instance = new SubType('xiao', 19)
+  //   instance.colors.push('green')
+  //   instance.sayName()
+  //   instance.sayAge()
+  //   console.log(instance.colors)
 
 
-//   var instance2 = new SubType('lei', 20)
-//  instance2.sayName()
-//  instance2.sayAge()
-//   console.log(instance2.colors);
+  //   var instance2 = new SubType('lei', 20)
+  //  instance2.sayName()
+  //  instance2.sayAge()
+  //   console.log(instance2.colors);
 
 }
 
 {
-  function object(o){
-    function F(){}
+  function object(o) {
+    function F() {}
     F.prototype = o
     return new F()
   }
 
   var person = {
     name: 'xiao',
-    colors: ['red','yellow']
+    colors: ['red', 'yellow']
   }
 
   // var instance = object(person)
@@ -411,15 +411,15 @@
 }
 
 {
-  function object(o){
-    function F(){}
+  function object(o) {
+    function F() {}
     F.prototype = o
     return new F()
   }
 
   var person = {
     name: 'xiao',
-    colors: ['red','yellow']
+    colors: ['red', 'yellow']
   }
 
   // var instance = Object.create(person)
@@ -441,7 +441,7 @@
 
   var instance = Object.create(person, {
     name: {
-      value : 'xiao'
+      value: 'xiao'
     }
   })
 
@@ -449,9 +449,9 @@
 }
 
 {
-  function createAnother(original){
+  function createAnother(original) {
     var clone = Object.create(original)
-    clone.sayHi = function(){
+    clone.sayHi = function () {
       console.log('hi');
     }
     return clone
@@ -467,20 +467,20 @@
 }
 
 {
-  function inheritPrototype (SubType, SuperType){
+  function inheritPrototype(SubType, SuperType) {
     var clone = Object.create(SuperType.prototype)
     clone.constructor = SubType
     SubType.prototype = clone
   }
 
-  function SuperType(name){
+  function SuperType(name) {
     this.name = name
   }
-  SuperType.prototype.sayName = function(){
+  SuperType.prototype.sayName = function () {
     console.log(this.name);
   }
 
-  function SubType(name, age){
+  function SubType(name, age) {
     SuperType.call(this, name)
     this.age = age
   }
@@ -488,18 +488,54 @@
 
   inheritPrototype(SubType, SuperType)
 
- SubType.prototype.sayAge =  function(){
+  SubType.prototype.sayAge = function () {
     console.log(this.age);
   }
 
   SubType.prototype.test = 'test';
 
 
-  var instance = new SubType('xiao', 19)
-  instance.sayName()
-  console.log(instance.name);
-  console.log(instance.age);
-  console.log(instance.test);
-  instance.sayAge()
+  // var instance = new SubType('xiao', 19)
+  // instance.sayName()
+  // console.log(instance.name);
+  // console.log(instance.age);
+  // console.log(instance.test);
+  // instance.sayAge()
 
+}
+
+{
+  function factorial(num) {
+    if (num <= 1) {
+      return 1
+    } else {
+      return num * factorial(num - 1)
+    }
+  }
+  //  console.log( factorial(5))
+}
+
+{
+  function factorial(num) {
+    if (num <= 1) {
+      return 1
+    }
+    return num * arguments.callee(num - 1)
+  }
+  // factorial = null
+  // console.log( factorial(5))
+
+
+  // console.log( factorial(5))
+}
+
+{
+  var factorial = (function f(num) {
+    if (num <= 1) {
+      return 1
+    } else {
+      return num * f(num - 1)
+    }
+  })
+  console.log(factorial(5))
 }
