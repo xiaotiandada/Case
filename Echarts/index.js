@@ -127,7 +127,7 @@ let doughnutChartOption2 = {
       x: "right",
       itemGap: 30,
       icon: "circle",
-      data: {}
+      data: []
     }
   ],
   graphic: {
