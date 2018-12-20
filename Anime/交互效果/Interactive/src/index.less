@@ -1,16 +1,55 @@
+html,
 body {
-  background-color: rgb(196, 196, 196);
+  height: 100%;
 }
 
-div {
-  width: 100px;
-  height: 100px;
-  background-image: url(./assets/img/touxiang.jpg);
-  background-size: cover;
-  p {
-    color: #fff;
-  }
-  div {
-    display: flex;
+body {
+  padding: 0;
+  margin: 0;
+  background-color: #eeeeee;
+}
+
+.container {
+  height: 100%;
+  position: relative;
+}
+
+.card {
+  width: 200px;
+  height: 200px;
+  border-radius: 3px;
+  background-color: aquamarine;
+  position: absolute;
+  left: 50%;
+  bottom: 100px;
+  transform: translate(-50%, 0);
+  .box {
+    width: 100%;
+    height: 100%;
+    background-color: aquamarine;
+    border: 1px solid #eee;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform-origin: -100px -50px;
+    &:nth-of-type(1) {}
+    &:nth-of-type(2) {
+      transform: rotate(-10deg);
+    }
+    &:nth-of-type(3) {
+      transform: rotate(-20deg);
+    }
+    &:nth-of-type(4) {
+      transform: rotate(-30deg);
+    }
+    &:nth-of-type(5) {
+      transform: rotate(-40deg);
+    }
+    &:nth-of-type(6) {
+      transform: rotate(-50deg);
+    }
+    &:nth-of-type(7) {
+      transform: rotate(-60deg);
+    }
   }
 }
