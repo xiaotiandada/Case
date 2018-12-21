@@ -12,44 +12,51 @@ body {
 .container {
   height: 100%;
   position: relative;
+  perspective: 800px;
 }
 
 .card {
   width: 200px;
   height: 200px;
   border-radius: 3px;
-  background-color: aquamarine;
+  background-color: #eee;
   position: absolute;
   left: 50%;
   bottom: 100px;
   transform: translate(-50%, 0);
+  transform-style: preserve-3d;
   .box {
     width: 100%;
     height: 100%;
-    background-color: aquamarine;
+    background-color: #737373;
     border: 1px solid #eee;
     position: absolute;
     left: 0;
     top: 0;
     transform-origin: -100px -50px;
-    &:nth-of-type(1) {}
+    transition: all 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:nth-of-type(1) {
+    }
     &:nth-of-type(2) {
-      transform: rotate(-10deg);
+      transform: rotate(-10deg) translateZ(-60px);
     }
     &:nth-of-type(3) {
-      transform: rotate(-20deg);
+      transform: rotate(-20deg) translateZ(-120px);
     }
     &:nth-of-type(4) {
-      transform: rotate(-30deg);
+      transform: rotate(-30deg) translateZ(-180px);
     }
     &:nth-of-type(5) {
-      transform: rotate(-40deg);
+      transform: rotate(-40deg) translateZ(-240px);
     }
     &:nth-of-type(6) {
-      transform: rotate(-50deg);
+      transform: rotate(-50deg) translateZ(-300px);
     }
     &:nth-of-type(7) {
-      transform: rotate(-60deg);
+      transform: rotate(-60deg) translateZ(-360px);
     }
   }
 }

@@ -16,10 +16,10 @@ module.exports = () => {
         template: './src/index.html'
       }),
       new ExtractTextPlugin("styles.css"),
-      new webpack.ProvidePlugin({
-        $: 'jquery',
-        jQuery: 'jquery'
-      })
+      // new webpack.ProvidePlugin({
+      //   $: 'jquery',
+      //   jQuery: 'jquery'
+      // })
     ],
     module: {
       rules: [{
