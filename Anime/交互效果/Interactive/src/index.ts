@@ -1,70 +1,85 @@
 import "./index.less";
+let card: any = document.querySelector(".card");
 
-let card: any = document.querySelector("#card");
-let box: any = document.querySelectorAll(".box");
-let now: number = 0;
-let status: boolean = true;
-let positionArr: any = [];
+class Interactive {
+  box: any;
+  len: number;
+  status: boolean;
+  now: number;
+  positionArr: any;
+  constructor() {
+    this.box = document.querySelectorAll(".box");
+    this.len = this.box.length;
+    this.status = true;
+    this.now = 0;
+    this.positionArr = [];
+  }
 
-card.addEventListener("touchmove", function() {
-  toggleBox();
-});
+  initData() {
+    this.box.forEach((element: any, index: number) => {
+      this.positionArr.push([10 * index, 60 * index]);
+    });
+  }
+  touchStart() {
+    if (!this.status) return false;
+    this.status = false;
+    this.toggleFirstElement();
 
-function initPositionArr() {
-  box.forEach((element: any, index: number) => {
-    positionArr.push([index * 10, index * 60]);
-  });
-}
-initPositionArr();
+    this.positionArr.unshift(this.positionArr.pop());
 
-function toggleBox() {
-  if (!status) return;
-  status = false;
-  positionArr.unshift(positionArr.pop());
-
-  function setFisrtElement() {
-    let index: number = now;
-    const goFirstEvent = async () => {
-      console.log(1);
-      setStyle(box[now], {
-        transform: `rotateY(-20deg) translate(-500px, 0)`
+    this.box.forEach((element: any, index: number) => {
+      this.setElementStyle(this.box[index], {
+        transform: `rotate(-${this.positionArr[index][0]}deg) translateZ(-${
+          this.positionArr[index][1]
+        }px)`
       });
-      await goTwoEvent();
+    });
+
+    this.now++;
+
+    if (this.now >= this.len) {
+      this.now = 0;
+    }
+
+    setTimeout(() => {
+      this.status = true;
+    }, 300);
+  }
+  toggleFirstElement() {
+    let index: number = this.now;
+    const setFirstElement = async () => {
+      this.setElementStyle(this.box[index], {
+        transform: `rotate(20deg) translate(-400px,0)`
+      });
+      await second();
     };
-    const goTwoEvent = () => {
+    const second = () => {
       return new Promise(resolve => {
-        index !== 0 ? index - 1 : index;
         setTimeout(() => {
-          setStyle(box[index], {
-            transform: `rotate(-60deg) translateZ(-360px)`
+          console.log(index);
+          console.log(this.positionArr);
+          this.setElementStyle(this.box[index], {
+            transform: `rotate(-${this.len - 1 * 10}deg) translateZ(-${this
+              .len -
+              1 * 60}px)`
           });
           resolve();
         }, 300);
       });
     };
-    goFirstEvent();
+    setFirstElement();
   }
-  setFisrtElement();
 
-  box.forEach((element: any, index: number) => {
-    if (index === now) return;
-    setStyle(box[index], {
-      transform: `rotate(-${positionArr[index][0]}deg) translateZ(-${
-        positionArr[index][1]
-      }px)`
+  setElementStyle(obj: any, params: any) {
+    Object.keys(params).forEach(key => {
+      obj.style[key] = params[key];
     });
-  });
-  now++;
-  if (now >= box.length) {
-    now = 0;
   }
-  setTimeout(() => {
-    status = true;
-  }, 300);
 }
 
-function setStyle(el: any, params: any) {
-  Object.keys(params).forEach((key: any) => {
-    el.style[key] = params[key];
-  });
-}
+let interactive = new Interactive();
+interactive.initData();
+
+card.addEventListener("touchmove", () => {
+  interactive.touchStart();
+});
