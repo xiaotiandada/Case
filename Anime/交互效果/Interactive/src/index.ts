@@ -23,25 +23,26 @@ function toggleBox() {
   positionArr.unshift(positionArr.pop());
 
   function setFisrtElement() {
-    let idnex: number = now;
-    let promise = new Promise(resolve => {
+    let index: number = now;
+    const goFirstEvent = async () => {
+      console.log(1);
       setStyle(box[now], {
         transform: `rotateY(-20deg) translate(-500px, 0)`
       });
-      resolve();
-    });
-    promise.then(() => {
-      set();
-    });
-
-    function set() {
-      idnex !== 0 ? idnex - 1 : idnex;
-      setTimeout(() => {
-        setStyle(box[idnex], {
-          transform: `rotate(-60deg) translateZ(-360px)`
-        });
-      }, 100);
-    }
+      await goTwoEvent();
+    };
+    const goTwoEvent = () => {
+      return new Promise(resolve => {
+        index !== 0 ? index - 1 : index;
+        setTimeout(() => {
+          setStyle(box[index], {
+            transform: `rotate(-60deg) translateZ(-360px)`
+          });
+          resolve();
+        }, 300);
+      });
+    };
+    goFirstEvent();
   }
   setFisrtElement();
 
@@ -67,37 +68,3 @@ function setStyle(el: any, params: any) {
     el.style[key] = params[key];
   });
 }
-
-// async function test() {
-//   console.log(1);
-//   return 2;
-// }
-// async function test1() {
-//   console.log(3);
-//   return Promise.resolve(4);
-// }
-
-// async function test2() {
-//   console.log(5);
-
-//   const a = await test();
-//   console.log(a);
-
-//   const b = await test1();
-//   console.log(b);
-
-//   console.log(6);
-// }
-
-// test2();
-
-// var test3 = new Promise(resolve => {
-//   console.log(7);
-//   resolve(8);
-// });
-
-// test3.then(val => {
-//   console.log(val);
-// });
-
-// console.log(9);
