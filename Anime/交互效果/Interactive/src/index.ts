@@ -56,8 +56,6 @@ class Interactive {
     const second = () => {
       return new Promise(resolve => {
         setTimeout(() => {
-          console.log(index);
-          console.log(this.positionArr);
           this.setElementStyle(this.box[index], {
             transform: `rotate(-${this.len - 1 * 10}deg) translateZ(-${this
               .len -
