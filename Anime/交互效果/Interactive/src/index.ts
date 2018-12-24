@@ -56,26 +56,11 @@ class Interactive {
       Utils.setElementStyle(this.box[index], {
         transform: `rotate(20deg) translate(-400px,0)`
       });
-<<<<<<< HEAD
-      await second();
-    };
-    const second = () => {
-      return new Promise(resolve => {
-        setTimeout(() => {
-          this.setElementStyle(this.box[index], {
-            transform: `rotate(-${this.len - 1 * 10}deg) translateZ(-${this
-              .len -
-              1 * 60}px)`
-          });
-          resolve();
-        }, 300);
-=======
       await sleep(300);
       Utils.setElementStyle(this.box[index], {
         transform: `rotate(-${(this.len - 1) * 10}deg) translateZ(-${(this.len -
           1) *
           60}px)`
->>>>>>> 6392c38d356e7b3535e6dcb37ed1fb39751fe858
       });
     };
     setFirstElement();
