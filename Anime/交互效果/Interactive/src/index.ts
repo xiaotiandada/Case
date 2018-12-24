@@ -28,6 +28,7 @@ class Interactive {
     this.positionArr.unshift(this.positionArr.pop());
 
     this.box.forEach((element: any, index: number) => {
+      if (index === this.now) return;
       this.setElementStyle(this.box[index], {
         transform: `rotate(-${this.positionArr[index][0]}deg) translateZ(-${
           this.positionArr[index][1]
@@ -47,25 +48,24 @@ class Interactive {
   }
   toggleFirstElement() {
     let index: number = this.now;
+    const second = () => {
+      return new Promise(resolve => {
+        return setTimeout(() => {
+          this.setElementStyle(this.box[index], {
+            transform: `rotate(-${(this.len - 1) * 10}deg) translateZ(-${(this
+              .len -
+              1) *
+              60}px)`
+          });
+          return resolve();
+        }, 300);
+      });
+    };
     const setFirstElement = async () => {
       this.setElementStyle(this.box[index], {
         transform: `rotate(20deg) translate(-400px,0)`
       });
       await second();
-    };
-    const second = () => {
-      return new Promise(resolve => {
-        setTimeout(() => {
-          console.log(index);
-          console.log(this.positionArr);
-          this.setElementStyle(this.box[index], {
-            transform: `rotate(-${this.len - 1 * 10}deg) translateZ(-${this
-              .len -
-              1 * 60}px)`
-          });
-          resolve();
-        }, 300);
-      });
     };
     setFirstElement();
   }
