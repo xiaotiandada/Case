@@ -1,4 +1,6 @@
 import "./index.less";
+import Utils from "./utils";
+
 let card: any = document.querySelector(".card");
 
 class Interactive {
@@ -28,7 +30,8 @@ class Interactive {
     this.positionArr.unshift(this.positionArr.pop());
 
     this.box.forEach((element: any, index: number) => {
-      this.setElementStyle(this.box[index], {
+      if (index === this.now) return;
+      Utils.setElementStyle(this.box[index], {
         transform: `rotate(-${this.positionArr[index][0]}deg) translateZ(-${
           this.positionArr[index][1]
         }px)`
@@ -47,10 +50,13 @@ class Interactive {
   }
   toggleFirstElement() {
     let index: number = this.now;
+    const sleep = (time: number) =>
+      new Promise(reslove => setTimeout(reslove, time));
     const setFirstElement = async () => {
-      this.setElementStyle(this.box[index], {
+      Utils.setElementStyle(this.box[index], {
         transform: `rotate(20deg) translate(-400px,0)`
       });
+<<<<<<< HEAD
       await second();
     };
     const second = () => {
@@ -63,17 +69,58 @@ class Interactive {
           });
           resolve();
         }, 300);
+=======
+      await sleep(300);
+      Utils.setElementStyle(this.box[index], {
+        transform: `rotate(-${(this.len - 1) * 10}deg) translateZ(-${(this.len -
+          1) *
+          60}px)`
+>>>>>>> 6392c38d356e7b3535e6dcb37ed1fb39751fe858
       });
     };
     setFirstElement();
   }
+}
 
-  setElementStyle(obj: any, params: any) {
-    Object.keys(params).forEach(key => {
-      obj.style[key] = params[key];
+class ToggleDemo {
+  container: any;
+  toggleLink: any;
+  now: number;
+  constructor() {
+    this.toggleLink = document.querySelectorAll("#header a");
+    this.container = document.querySelectorAll(".container");
+    this.now = 0;
+  }
+
+  init() {
+    this.toggle(this.now);
+    this.toggleClick();
+  }
+  toggleClick() {
+    this.toggleLink.forEach((element: any, index: number) => {
+      element.addEventListener("click", () => {
+        this.toggle(index);
+      });
     });
   }
+  toggle(index: number) {
+    Utils.setElementStyle(this.toggleLink[index], {
+      color: "red"
+    });
+    Utils.setElementStyle(this.container[index], {
+      display: "block"
+    });
+  }
+  getNow() {
+    return this.now;
+  }
+  setNow(index: number) {
+    this.now = index;
+  }
 }
+
+let toggleDemo = new ToggleDemo();
+toggleDemo.init();
 
 let interactive = new Interactive();
 interactive.initData();
