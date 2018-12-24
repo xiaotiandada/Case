@@ -4,6 +4,7 @@ let doughnutChart1 = echarts.init(document.getElementById("doughnutChart1"));
 let doughnutChart2 = echarts.init(document.getElementById("doughnutChart2"));
 let doughnutChart3 = echarts.init(document.getElementById("doughnutChart3"));
 let doughnutChart4 = echarts.init(document.getElementById("doughnutChart4"));
+let doughnutChart5 = echarts.init(document.getElementById("doughnutChart5"));
 let doughnutChartOption = {
   tooltip: {
     trigger: "item",
@@ -291,6 +292,79 @@ let doughnutChartOption4 = {
     }
   ]
 };
+let doughnutChartOption5 = {
+  color: ["#1976D2", "#2196F3", "#03A9F4"], // 颜色
+  tooltip: {
+    trigger: 'item',
+    formatter: "{a} <br/>{b}: {c} ({d}%)"
+  },
+  legend: [{
+      orient: 'vertical',
+      x: 'left',
+      textStyle: {
+        color: '#fff'
+      },
+      data: ['白天', '晚上']
+    },
+    {
+      orient: 'vertical',
+      x: 'right',
+      textStyle: {
+        color: '#fff'
+      },
+      data: ['上班', '游戏', '休息']
+    }
+  ],
+  series: [{
+      name: '时间',
+      type: 'pie',
+      radius: [0, '36%'],
+      center: ['50%', '50%'],
+      label: {
+        show: true,
+        color: '#fff',
+        position: 'inside'
+      },
+      labelLine: {
+        show: false
+      },
+      data: [{
+          value: 12,
+          name: '白天',
+        },
+        {
+          value: 12,
+          name: '晚上'
+        }
+      ]
+    },
+    {
+      name: '分类',
+      type: 'pie',
+      radius: ['44%', '72%'],
+      center: ['50%', '50%'],
+      label: {
+        show: true,
+        color: '#fff'
+      },
+      labelLine: {
+        show: true,
+      },
+      data: [{
+          value: 335,
+          name: '上班'
+        },
+        {
+          value: 310,
+          name: '游戏'
+        }, {
+          value: 300,
+          name: '休息'
+        }
+      ]
+    }
+  ]
+};
 let area = [
   "黄埔",
   "徐汇",
@@ -340,3 +414,4 @@ doughnutChart1.setOption(doughnutChartOption1, true);
 doughnutChart2.setOption(doughnutChartOption2, true);
 doughnutChart3.setOption(doughnutChartOption3, true);
 doughnutChart4.setOption(doughnutChartOption4, true);
+doughnutChart5.setOption(doughnutChartOption5, true);
