@@ -3,5 +3,6 @@ export default {
     Object.keys(params).forEach(key => {
       obj.style[key] = params[key];
     });
-  }
+  },
+  sleep: (time: number) => new Promise(reslove => setTimeout(reslove, time))
 };
