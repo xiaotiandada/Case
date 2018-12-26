@@ -163,18 +163,17 @@ class Interactive1 {
         }px)`
       });
     });
+    this.now++;
+
     if (this.now >= this.len) {
       this.now = 0;
     }
-    this.now++;
     setTimeout(() => {
       this.status = true;
     }, 300);
   }
   async toggleFirstElement() {
     let index: number = this.now;
-    console.log(this.box[index]);
-    console.log(index);
     Utils.setElementStyle(this.box[index], {
       transform: `rotateY(0) translate3d(-200%, 0px, 0px)`
     });
