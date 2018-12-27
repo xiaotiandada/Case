@@ -92,7 +92,6 @@
   dep.notify(vm.value);
 }
 
-
 {
   class Publisher {
     constructor() {
@@ -141,4 +140,76 @@
   publisher.publish('email', '订阅的一周邮件')
 
   console.log(publisher.registration)
+}
+
+{
+  let data = {
+    list: []
+  }
+
+
+  Object.keys(data).forEach(key => {
+    let value = data[key]
+    Object.defineProperty(data, key, {
+      enumerable: true,
+      configurable: true,
+      set(newValue) {
+        console.log('set')
+        value = newValue
+      },
+      get() {
+        console.log('get')
+        return value
+      }
+    })
+  })
+
+  // data.list.push(1)
+  // console.log(data.list)
+  // data.list = [1, 2, 3]
+  // console.log(data.list)
+}
+
+{
+
+  //数据源
+  let vm = {
+    list: [1, 2, 3, 4]
+  }
+
+  function initMVVM(vm) {
+    Object.keys(vm).forEach(key => {
+      if (Array.isArray(vm[key])) {
+        bindWatcherToArray(vm[key])
+      }
+    })
+  }
+
+  const bindWatcherToArray = array => {
+    let arrayMethod = Object.create(Array.prototype);
+    ['push', 'pop', 'shift', 'unshift', 'splice', 'sort', 'reverse'].forEach(method => {
+      Object.defineProperty(arrayMethod, method, {
+        enumerable: true,
+        configurable: true,
+        value: function () {
+          Array.prototype[method].apply(this, [...arguments])
+        }
+      })
+    })
+    array.__proto__ = arrayMethod
+  }
+
+  //初始化数据源
+  initMVVM(vm)
+
+  console.log(vm.list)
+  vm.list.push(123)
+  console.log(vm.list)
+  vm.list = [1, 2, 3, 4, 5, 5, 6]
+  console.log(vm.list)
+
+  function inputChange(e) {
+    vm.list.push(e.target.value)
+    console.log(vm.list)
+  }
 }
