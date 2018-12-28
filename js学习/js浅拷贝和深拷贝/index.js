@@ -63,14 +63,14 @@
   }
   let obj1 = deepCopy(obj)
 
-  console.log(obj)
-  console.log(obj1)
+  // console.log(obj)
+  // console.log(obj1)
 
   obj.name = 'deepcopy1'
   obj.obj.name = 'deepcopy'
 
-  console.log(obj)
-  console.log(obj1)
+  // console.log(obj)
+  // console.log(obj1)
 
 }
 
@@ -79,11 +79,62 @@
     name: 'xiao'
   }
   let obj1 = obj.name
-  console.log(obj)
-  console.log(obj1)
+  // console.log(obj)
+  // console.log(obj1)
 
-  obj.name = 'lei'
+  // obj.name = 'lei'
+
+  // console.log(obj)
+  // console.log(obj1)
+}
+
+{
+  let obj = {
+    str: 'str',
+    obj: {
+      str: 'str',
+      arr: [1, 2, 3, 4]
+    },
+    arr: [1, 2, 3, 4]
+  }
+
+  const deepCopy = obj => {
+    let data = Array.isArray(obj) ? [] : {}
+    if (obj && typeof obj === 'object')
+      for (const key in obj)
+        if (obj.hasOwnproperty(key))
+          data[key] = typeof obj[key] === 'object' ? deepCopy(obj[key]) : obj[key]
+
+    return data
+  }
+
+
+  let obj1 = deepCopy(obj)
+
+  obj.str = 'xiao'
+  obj.obj.str = 'lei'
+  obj.arr[2] = 333
+
 
   console.log(obj)
   console.log(obj1)
 }
+//  {
+//   let obj = [
+//     1, 2, 3, [1, 2, 3], 4, 5, [2, [3]]
+//   ]
+
+//   const deepCopy = obj => {
+//     let data = Object.create(null)
+//     for (const key in obj)
+//       if (obj.hasOwnproperty(key))
+//         data[key] = typeof obj[key] === 'object' ? deepCopy(obj[key]) : obj[key]
+//   }
+
+
+//   obj[2] = 333
+//   let obj1 = deepCopy(obj)
+
+//   console.log(obj)
+//   console.log(obj1)
+// }
