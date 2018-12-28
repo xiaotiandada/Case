@@ -73,3 +73,17 @@
   console.log(obj1)
 
 }
+
+{
+  let obj = {
+    name: 'xiao'
+  }
+  let obj1 = obj.name
+  console.log(obj)
+  console.log(obj1)
+
+  obj.name = 'lei'
+
+  console.log(obj)
+  console.log(obj1)
+}
