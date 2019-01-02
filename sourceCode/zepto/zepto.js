@@ -16,7 +16,11 @@
   // console.log(this)
   // console.log(window)
 }(this, function (window) {
+
+  // 立即执行
   var Zepto = (function () {
+
+    // 定义变量
     var undefined, key, $, classList, emptyArray = [],
       concat = emptyArray.concat,
       filter = emptyArray.filter,
@@ -79,6 +83,7 @@
       function (object) {
         return object instanceof Array
       }
+
 
     zepto.matches = function (element, selector) {
       if (!selector || !element || element.nodeType !== 1) return false
@@ -1066,6 +1071,43 @@
   // console.log(window.Zepto)
   // console.log(window.$)
   // console.log(window)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   // 立即执行
   ;
