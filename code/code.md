@@ -46,3 +46,31 @@
 ```
 
 > https://juejin.im/entry/5bd8e8b75188254a267ef788
+
+```js
+const array = [1, 2, 3, 4, 1, 1, 2, 3, 4, 5];
+console.log([...new Set(array)]);
+
+const arr = array.filter((item, index) => array.indexOf(item) === index);
+console.log(arr);
+
+const arr1 = array.reduce(
+  (unique, item) => (unique.includes(item) ? unique : [...unique, item]),
+  []
+);
+console.log(arr);
+
+const arr = [1, 23, 4, [5, 6, [6, 7, 7], 5], 555, [11, [11, 12]]];
+
+const multiArr = arr => {
+  const tileArr = arr => {
+    const arrs = [].concat(...arr);
+    return arr.some(item => Array.isArray(item)) ? tileArr(arrs) : arrs;
+  };
+  const setArr = arr => [...new Set(arr)];
+
+  const tileArrs = tileArr(arr);
+  return setArr(tileArrs);
+};
+console.log(multiArr(arr));
+```
