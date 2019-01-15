@@ -24,7 +24,7 @@
       for (let i = 0; i < len; i++)
         if (i === 0) str += arr[i];
         else if (i === arr.length - 1) str += " & " + arr[i];
-        else str += ", " + arr[i];
+      else str += ", " + arr[i];
       return str;
     };
     const arr = names.map(getName);
@@ -72,5 +72,23 @@
     const val = sqrtNum(sq);
 
     return isInt(val) ? (val + 1) * (val + 1) : -1;
+  }
+}
+
+
+{
+
+  /**
+   * 
+   * @param {*} n 
+   * @param {*} x 
+   * @param {*} y 
+   * 
+   * Create a function isDivisible(n, x, y) that checks if a number n is divisible by two numbers x AND y. All inputs are positive, non-zero digits.
+   */
+  function isDivisible(n, x, y) {
+    const divisible = (n, num) => n % num === 0 ? true : false
+
+    return divisible(n, x) && divisible(n, y)
   }
 }
