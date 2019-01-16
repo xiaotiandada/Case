@@ -78,17 +78,46 @@
 
 {
 
-  /**
-   * 
-   * @param {*} n 
-   * @param {*} x 
-   * @param {*} y 
-   * 
-   * Create a function isDivisible(n, x, y) that checks if a number n is divisible by two numbers x AND y. All inputs are positive, non-zero digits.
-   */
+  // Create a function isDivisible(n, x, y) that checks if a number n is divisible by two numbers x AND y. All inputs are positive, non-zero digits.
   function isDivisible(n, x, y) {
     const divisible = (n, num) => n % num === 0 ? true : false
 
     return divisible(n, x) && divisible(n, y)
+  }
+}
+
+{
+  // Let's play! You have to return which player won! In case of a draw return Draw!.
+  const rps = (p1, p2) => {
+    if (p1 === p2) return 'Draw!'
+
+    if ((p1 === 'rock' && p2 === 'scissors') || (p1 === 'scissors' && p2 === 'paper') || p1 === 'paper' && p2 === 'rock') {
+      return 'Player 1 won!'
+    } else {
+      return 'Player 2 won!'
+    }
+  };
+}
+
+{
+  // Complete the function that accepts a string parameter, and reverses each word in the string. All spaces in the string should be retained.
+
+  function reverseWords(str) {
+    // Go for it
+    const arrStrReverse = arr => arr.split('').reverse().join('')
+    const arrStr = str.split(' ')
+    const arrStrVal = arrStr.map(item => arrStrReverse(item))
+    return arrStrVal.join(' ')
+  }
+}
+
+{
+
+  // Consider an array of sheep where some sheep may be missing from their place. We need a function that counts the number of sheep present in the array (true means present).
+
+  //Hint: Don't forget to check for bad values like null/undefined
+  function countSheeps(arrayOfSheep) {
+    // TODO May the force be with you
+    return arrayOfSheep.filter(boolean => !!boolean).length
   }
 }
