@@ -21,3 +21,12 @@ var reverse = function(x) {
     let numStr = xStr.split('').reverse().join('')
     return booLeanStr ? parseInt('-'+numStr) : parseInt(numStr) 
 };
+// 9. 回文数
+/**
+ * @param {number} x
+ * @return {boolean}
+ */
+var isPalindrome = function(x) {
+    let x1 = (x+'').split('').reverse().join('')
+    return parseInt(x1) === x
+};
