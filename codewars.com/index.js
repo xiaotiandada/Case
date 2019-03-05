@@ -121,3 +121,13 @@
     return arrayOfSheep.filter(boolean => !!boolean).length
   }
 }
+
+{
+  // Gauß needs help! (Sums of a lot of numbers).
+  // f(n=100) // returns 5050 
+  function f(n){
+  //insert your code here.... and go crazy!
+    return ((typeof n !== 'number') ||(!Number.isInteger(n)) || (n <= 0)) ? false : n * (n + 1) /2
+   };
+}
+  
