@@ -171,5 +171,18 @@ function arithmetic(a, b, operator){
   return n * factorial(n-1)
 }
  }
-
+{
+// Sum of all the multiples of 3 or 5
+// findSum(5) should return 8 (3 + 5)
+// findSum(10) should return 33 (3 + 5 + 6 + 9 + 10)
+function findSum(n) {
+  let sum = 0
+  for (let i = 1; i<=n;i++){
+    if (i % 3 === 0 || i % 5 === 0){
+      sum += i
+    }
+  }
+  return sum;
+}
+}
 ```
