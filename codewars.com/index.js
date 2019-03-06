@@ -130,4 +130,27 @@
     return ((typeof n !== 'number') ||(!Number.isInteger(n)) || (n <= 0)) ? false : n * (n + 1) /2
    };
 }
+
+{
+//   Make a function that does arithmetic!
+//   ArithmeticFunction.arithmetic(5, 2, "add")      => returns 7
+// ArithmeticFunction.arithmetic(5, 2, "subtract") => returns 3
+// ArithmeticFunction.arithmetic(5, 2, "multiply") => returns 10
+// ArithmeticFunction.arithmetic(5, 2, "divide")   => returns 2
+function arithmetic(a, b, operator){
+  //your code here!
+  switch(operator){
+    case 'add':
+    return a + b;
+    case 'subtract':
+    return a - b;
+    case 'multiply':
+    return a * b;
+    case 'divide':
+    return a / b;
+    default:
+    return false;
+  }
+}
+}
   
