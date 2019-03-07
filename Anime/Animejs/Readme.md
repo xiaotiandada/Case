@@ -1,3 +1,4 @@
+```css
 .box {
   width: 50px;
   height: 150px;
@@ -15,7 +16,9 @@
   overflow: hidden;
   height: 165px;
 }
+```
 
+``` html
 <div class="boxes">
     <div class="boxes__inner">
       <div class="box js-box"></div>
@@ -31,7 +34,9 @@
       <div class="box js-box"></div>
     </div>
   </div>
+```
   
+```js
   const boxAnimation = anime({
   targets: '.js-box',
   translateY: [150, 50],
@@ -57,3 +62,4 @@
 boxAnimation()
 
 // 引入anime.js cdn
+```
