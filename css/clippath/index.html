@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+  
+  .circle {
+    width: 100px;
+    height: 100px;
+    background: #0cc;
+    clip-path: circle(50% at 50% 50%);
+  }
+
+  .ellipese {
+    width: 100px;
+    height: 100px;
+    background-color: #aaa;
+    clip-path: ellipse(25% 50% at 50% 50%);
+  }
+
+  .inset {
+    width: 100px;
+    height: 100px;
+    background-color: #99f;
+    clip-path: inset(10px 20px 30px 10px round 20px 5px 50px 0);
+  }
+
+  .a {
+    width: 100px;
+    height: 87px;
+    background-color: #c00;
+    clip-path: polygon(0% 100%, 50% 0, 100% 100%);
+  }
+
+  .b {
+    width: 100px;
+    height: 100px;
+    background-color: #069;
+    clip-path:polygon(0% 0%, 0% 100%,100% 100%,100% 0%);
+  }
+
+  .c {
+    width:162px;
+    height:154px;
+    background:#095;
+    clip-path: polygon(0% 38.31%, 50% 0%,100% 38.31%,80.86% 100%,19.14% 100%);
+  }
+  .d {
+    width:200px;
+    height:174px;
+    background:#f80;
+    clip-path: polygon(25% 0%, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+  }
+  .e{
+    width:224px;
+    height:218px;
+    background:#09c;
+    -webkit-clip-path:polygon(50% 0%, 90.18% 19.72%,100% 64.22%,72.32% 100%,27.68% 100%,0% 64.22%,10.09% 19.72%);
+  }
+  .f{
+    width:242px;
+    height:242px;
+    background:#f69;
+    -webkit-clip-path:polygon(29.34% 0%, 70.66% 0%,100% 29.34%,100% 70.66%,70.66% 100%,29.34% 100%,0% 70.66%,0% 29.34%);
+  }
+  </style>
+</head>
+<body>
+  <div class="circle"></div>
+  <div class="ellipese"></div>
+  <div class="inset"></div>
+  <div class="a"></div>
+  <div class="b"></div>
+  <div class="c"></div>
+  <div class="d"></div>
+  <div class="e"></div>
+  <div class="f"></div>
+</body>
+</html>
