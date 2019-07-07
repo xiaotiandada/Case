@@ -1,0 +1,43 @@
+
+body {
+  width: 100vw;
+  height: 100vh;
+  font-family: "lato", sans-serif;
+  color: #E8AFE1;
+  background: #ad1283; /* Old browsers */
+  background: -moz-linear-gradient(-45deg, #ad1283 0%, #8f45d8 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg, #ad1283 0%,#8f45d8 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(135deg, #ad1283 0%,#8f45d8 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ad1283', endColorstr='#8f45d8',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+.main {
+  width: 300px;
+  height: 60px;
+  margin: 100px 200px;
+}
+
+.magnifier {
+  cursor: pointer;
+  width: 60px;
+  height: 60px;
+}
+.magnifier-l-c {
+  /* 避免引起回流 */
+  visibility: hidden;
+}
+
+.magnifier .open {
+
+}
+
+.magnifier.open .magnifier-c {
+  transform: scale(0.72)
+}
+.magnifier.open .magnifier-l {
+  display: none;
+}
+.magnifier.open .magnifier-l-c {
+  /* 避免引起回流 */
+  visibility: visible;
+}
