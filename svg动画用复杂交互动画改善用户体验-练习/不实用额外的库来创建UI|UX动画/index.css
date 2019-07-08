@@ -13,22 +13,48 @@ body {
 
 .main {
   width: 300px;
-  height: 60px;
-  margin: 100px 200px;
+  height: 46px;
+  margin: 100px 0 0 100px;
+  position: relative;
 }
 
 .magnifier {
   cursor: pointer;
-  width: 60px;
-  height: 60px;
+  width: 46px;
+  height: 46px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
 }
-.magnifier-l-c {
+.line {
+  cursor: pointer;
+  width: 300px;
+  height: 46px;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.magnifier-l-c,
+ .line-line,
+ .main input {
   /* 避免引起回流 */
   visibility: hidden;
 }
-
-.magnifier .open {
-
+.main input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: #eaeaea;
+  padding: 0 0 0 40px;
+  z-index: 1;
+  position: relative;
+  font-size: 16px;
+}
+.main input::-webkit-input-placeholder{
+  color: #fff;
 }
 
 .magnifier.open .magnifier-c {
@@ -37,7 +63,9 @@ body {
 .magnifier.open .magnifier-l {
   display: none;
 }
-.magnifier.open .magnifier-l-c {
+.magnifier.open .magnifier-l-c, 
+.main.open .line-line,
+.main.open input {
   /* 避免引起回流 */
   visibility: visible;
 }
