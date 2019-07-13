@@ -27,6 +27,17 @@ body {
   top: 0;
   z-index: 2;
 }
+.magnifier .magnifier-c {
+  transition: all .3s;
+}
+.magnifier .magnifier-l-c {
+  transition: all .2s;
+}
+.magnifier .magnifier-l {
+  opacity: 1;
+  visibility: visible;
+  transition: all .25s;
+}
 .line {
   cursor: pointer;
   width: 300px;
@@ -35,11 +46,16 @@ body {
   left: 0;
   top: 0;
 }
+.line .line-line {
+  transition: all .3s;
+  transform: translate(100%, 0);
+}
 .magnifier-l-c,
  .line-line,
  .main input {
   /* 避免引起回流 */
   visibility: hidden;
+  opacity: 0;
 }
 .main input {
   width: 100%;
@@ -61,11 +77,18 @@ body {
   transform: scale(0.72)
 }
 .magnifier.open .magnifier-l {
-  display: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(0, 10px);
 }
 .magnifier.open .magnifier-l-c, 
 .main.open .line-line,
 .main.open input {
   /* 避免引起回流 */
   visibility: visible;
+  opacity: 1;
+}
+
+.line.open .line-line {
+  transform: translate(0, 0);
 }
