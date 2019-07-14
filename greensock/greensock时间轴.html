@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+  .element1,
+  .element2,
+  .element3 {
+    width: 100px;
+    height: 100px;
+    margin: 30px 0;
+    background: red;
+  }
+  </style>
+</head>
+<body>
+  <div class="element1"></div>
+  <div class="element2"></div>
+  <div class="element3"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
+  <script>
+  let tl = new TimelineMax()
+  // tl.to('.element1', 2, {x: 300, ease: Power4.easeOut});
+  // tl.to('.element2', 2, {x: 300, ease: Power4.easeOut}, '-=1');
+  // tl.to('.element3', 2, {x: 300, ease: Power4.easeOut});
+
+  tl.to('.element2', 2, {rotation: 100, ease: Power4.easeOut});
+
+  tl.add('burst')
+  
+  tl.to('.element1', 2, {x: 300, ease: Power4.easeOut}, '-=1');
+  tl.to('.element3', 2, {x: 300, ease: Power4.easeOut});
+  </script>
+</body>
+</html>

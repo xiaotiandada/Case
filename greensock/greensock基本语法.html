@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+  #photo,
+  #circle {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+  }
+
+  #circle {
+    margin: 10px 0 0 0;
+    border-radius: 50%;
+  }
+
+  .element {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    margin: 10px 0 0 0;
+    border-radius: 50%;
+  }
+
+
+  .element,
+  .element1,
+  .element2 {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    margin: 10px 0 0 0;
+    border-radius: 50%;
+  }
+  </style>
+</head>
+<body>
+  <div id="photo"></div>
+
+  <div id="circle"></div>
+
+
+  <div class="element"></div>
+  <div class="element"></div>
+  <div class="element"></div>
+  <div class="element"></div>
+  <div class="element"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
+  <script>
+    var photo = document.getElementById("photo");
+    TweenMax.to(photo, 2, {width:"200px", height:"150px"});
+
+
+    // TweenMax.to('#circle', 2, { x: 200 })
+
+    TweenMax.fromTo('#circle', 2, { x: 0}, {x: 100})
+
+    TweenMax.staggerTo('.element', 2, { x: 100}, -0.1)
+
+  </script>
+</body>
+</html>
