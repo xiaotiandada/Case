@@ -30,9 +30,9 @@
   tl.to('.element2', 2, {rotation: 100, ease: Power4.easeOut});
 
   tl.add('burst')
-  
-  tl.to('.element1', 2, {x: 300, ease: Power4.easeOut}, '-=1');
-  tl.to('.element3', 2, {x: 300, ease: Power4.easeOut});
+
+  tl.to('.element1', 2, {x: 300, ease: Power4.easeOut}, '-=1', burst);
+  tl.to('.element3', 2, {x: 300, ease: Power4.easeOut}, burst);
   </script>
 </body>
 </html>
