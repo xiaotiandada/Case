@@ -1,0 +1,19 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+.container {
+  position: relative;
+}
+.item {
+  width: 200px;
+  background-color: rgb(168, 70, 70);
+  /* margin: 10px; */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+
+  position: absolute;
+}
