@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    div {
+      width: 100px;
+      height: 100px;
+      --color-stop: deeppink;
+      background: linear-gradient(white, var(--color-stop));
+      transition: --color-stop 1s;
+    }
+
+    div:hover {
+      --color-stop: deepskyblue;
+    }
+  </style>
+</head>
+
+<body>
+  <div></div>
+  <script>
+    if (window.CSS && window.Css.registerProperty) {
+      CSS.registerProperty({
+        name: '--color-stop',
+        syntax: '<color>',
+        inherits: false,
+        initialValue: 'transparent'
+      })
+    } else {
+      console.log('not Css')
+    }
+  </script>
+</body>
+
+</html>
