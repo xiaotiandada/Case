@@ -1,0 +1,1 @@
+[wiki](https://wiki.jikexueyuan.com/project/javascript-design-patterns/constructor-mode.html)
