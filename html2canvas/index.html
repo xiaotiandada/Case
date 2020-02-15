@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+  .box {
+    width: 300px;
+    height: 200px;
+    overflow: hidden;
+    position: fixed;
+    left: 100%;
+    top: 0;
+    z-index: 0;
+  }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    <div id="capture" style="padding: 10px; background: #f5da55">
+      <h4 style="color: #000; ">Hello world!</h4>
+    </div>
+  </div>
+
+  <button id="go">go</button>
+  <script src="./html2canvas.min.js"></script>
+  <script>
+    window.onload = function () {
+      let go = document.querySelector('#go')
+      console.log(html2canvas(document.body))
+      go.onclick = function () {
+        html2canvas(document.querySelector('#capture')).then(function(canvas) {
+          let img = document.createElement('img')
+          img.src = canvas.toDataURL()
+          img.width = 100
+          document.body.appendChild(img);
+        });
+      }
+    }
+  </script>
+</body>
+
+</html>
