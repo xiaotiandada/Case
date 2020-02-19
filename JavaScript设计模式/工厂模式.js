@@ -5,7 +5,7 @@ console.log('工厂模式');
 class Warrior {
   constructor() {
     this.occupation = '战士'
-    this.skill = '狂砍'
+    this.skill = '单一狂砍'
     this.blood = 100
     this.hit = 150
     // other
@@ -16,7 +16,7 @@ class Warrior {
 class Mage {
   constructor() {
     this.occupation = '法师'
-    this.skill = '冰冻'
+    this.skill = '集体冰冻'
     this.blood = 100
     this.hit = 120
   }
@@ -26,7 +26,7 @@ class Mage {
 class Archer {
   constructor() {
     this.occupation = '射手'
-    this.skill = '射箭'
+    this.skill = '全局轰炸'
     this.blood = 100
     this.hit = 80
   }
