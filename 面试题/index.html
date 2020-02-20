@@ -37,6 +37,7 @@
 <body>
 
   <div id="app">
+    {{lockListLength}}
     <div class="list">
       <div class="list-block" v-for="(item, index) in lockList" :key="index">
         <div class="list-block__time">{{item[0].messageTime}}</div>
