@@ -3,7 +3,7 @@ let lockMessageList = [
     user: '爸爸',
     message: '指纹开锁',
     messageIcon: 1,
-    messageTime: '2019-11-28 09:32:20'
+    messageTime: '2019-11-28 00:00:00'
   },
   {
     message: '密码开锁',
@@ -13,7 +13,7 @@ let lockMessageList = [
   {
     message: '卡片开锁',
     messageIcon: 3,
-    messageTime: '2019-11-28 02:32:20'
+    messageTime: '2019-11-28 23:59:59'
   },
   {
     user: '妈妈',
@@ -139,10 +139,11 @@ const dayGroup = arr => {
   return dayArr
 }
 
+const compose = (...fn) => fn.reduce((a, b) => (...args) => a(b(...args)))
 
-let timeSortList = timeSort(lockMessageList)
-let dayList = dayGroup(timeSortList)
-// console.log(dayList)
+let dayList = compose(dayGroup, timeSort)(lockMessageList)
+
+console.log(dayList)
 
 var app = new Vue({
   el: '#app',

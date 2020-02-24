@@ -20,10 +20,30 @@ const list = [
       messageTime: "2019-1-10 19:30:30"
   },
   {
+    message: "小明开锁2",
+    messageIcon: 3,
+    messageTime: "2019-1-9 00:00:00"
+  },
+  {
       message: "小亮开锁",
       messageIcon: 3,
       messageTime: "2019-1-13 8:30:30"
-  }
+  },
+  {
+    message: "小明开锁2",
+    messageIcon: 3,
+    messageTime: "2019-1-8 00:00:00"
+  },
+  {
+    message: "小明开锁3",
+    messageIcon: 3,
+    messageTime: "2019-1-8 23:59:59"
+  },
+  {
+    message: "小亮开锁",
+    messageIcon: 3,
+    messageTime: "2019-1-13 10:30:30"
+  },
 ];
 
 // 获取某一天的开始时间，也就是00:00:00 的时间戳
@@ -96,7 +116,12 @@ const aggreList = data => {
       }
   });
 
-  return [...new Set(data)];
+  console.log(data)
+
+  let arr = [...new Set(data)];
+  console.log(arr)
+
+  return arr
 };
 
 const parserList = data => {
@@ -113,25 +138,7 @@ const parserList = data => {
   });
 };
 
-// const compose = (...fn) => fn.reduce((a, b) => (...args) => a(b(...args)));
-
-// const pipe = (...fn) => args => fn.reduce((arg, fn) => fn(arg), args);
-
-function compose(...fn) {
-  return fn.reduce(function(a, b) {
-    // console.log(a, b);
-    return function(...args) {
-      // console.log(...args)
-      console.log('a', a);
-      console.log('b', b);
-      console.log('--------')
-      return a(b(...args))
-    }
-  })
-}
-
-  const pipe = (...fn) => args => fn.reduce((arg, fn) => fn(arg), args);
-
+const compose = (...fn) => fn.reduce((a, b) => (...args) => a(b(...args)));
 
 const handler = compose(parserList, aggreList, preAggreList)
 
