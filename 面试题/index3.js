@@ -1,4 +1,6 @@
-// 自己写的
+// 根据index2的灵感, 自己模仿的
+
+// 去掉第一个数据处理 换成排序
 
 let lockMessageList = [
   {
@@ -78,79 +80,51 @@ let lockMessageList = [
   },
 ]
 
-// [
-//   [
-//     {
-//       message: '卡片开锁',
-//       messageIcon: 3,
-//       messageTime: '2019-10-26 01:32:10'
-//     }
-//   ],
-//   [
-//     {
-//       message: '卡片开锁',
-//       messageIcon: 3,
-//       messageTime: '2019-10-26 01:32:10'
-//     }
-//   ]
-// ]
+// 排序
+const sortList = arr => arr.sort((a, b) => +new Date(b.messageTime) - +new Date(a.messageTime))
 
-// 按照时间排序
-const timeSort = arr => arr.sort((a, b) => +new Date(b.messageTime) - +new Date(a.messageTime))
-
-// 按天处理数据组
-const dayGroup = arr => {
-  // 没有直接返回
-  if (arr.length === 0) return []
-
-  let dayArr = []
-  let x = 0
-  let y = 0
-  // 默认第一天的时间
-  let currentTime = arr[0].messageTime
+// 比对数据
+const aggreLis = arr => {
+  if (!arr || !arr.length) return arr
 
   // 是否为同一天
   const isADay = (a, b) => new Date(a).toDateString() === new Date(b).toDateString()
 
-  // 解法思路
-  // x = 0 y = 0
-  // true y++           只改变y
-  // false x++ y = 0    改变x 重置y
-  for(let i = 0; i < arr.length; i++) {
-
-    // 判断当前的时间是否和上一天相同
-    if (isADay(currentTime, arr[i].messageTime)) {
-
-      // 如果没有数组则添加一个空数组
-      if (!dayArr[x]) dayArr[x] = []
-
-      // 如果从不同的天数切换过来,并且xy有数据则++
-      if (dayArr[x][y]) y++
-      dayArr[x][y] = arr[i]
-      y++
-    } else {
-      x++
-      y=0
-      // 如果没有数组则添加一个空数组
-      if (!dayArr[x]) dayArr[x] = []
-      dayArr[x][y] = arr[i]
+  let aggrrData = arr.map(item => {
+    try {
+      const filterItem = arr.filter(aggre => isADay(item.messageTime, aggre.messageTime))
+      return JSON.stringify(filterItem)
+    } catch (error) {
+      return item
     }
-    currentTime = arr[i].messageTime
-  }
+  })
 
-  return dayArr
+  return [...new Set(aggrrData)]
+}
+
+// 解析数据
+const parseList = arr => {
+  if (!arr || !arr.length) return arr
+
+  return arr.map(item => {
+    try {
+      return JSON.parse(item)
+    } catch (error) {
+      return item
+    }
+  })
 }
 
 const compose = (...fn) => fn.reduce((a, b) => (...args) => a(b(...args)))
 
-let dayList = compose(dayGroup, timeSort)(lockMessageList)
 
-console.log(dayList)
+let lockList = compose(parseList, aggreLis, sortList)(lockMessageList)
+console.log(lockList)
 
 var app = new Vue({
   el: '#app',
   data: {
-    lockList: dayList
+    lockList: lockList
   },
   computed: {
     lockListLength() {

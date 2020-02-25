@@ -1,3 +1,4 @@
+// 隔壁群大佬 革命 写的
 const list = [
   {
       message: "小明开锁",
