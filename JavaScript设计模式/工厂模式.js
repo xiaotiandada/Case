@@ -35,7 +35,7 @@ class Archer {
 }
 
 // 工厂对象
-// class、function、object 设计处理函数
+// class、function、object
 class RoleFactory {
   constructor() {}
   createRole(role) {
