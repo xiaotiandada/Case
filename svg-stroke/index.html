@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    #line {
+      stroke-dashoffset: 300
+    }
+    #line:hover {
+      stroke-dashoffset: 0;
+    }
+    #line line {
+      transition: all .3s;
+    }
+
+
+    #circle circle {
+      transition: all .3s;
+      stroke-dasharray: 314;
+      stroke-dashoffset: 314;
+    }
+
+
+    #circle:hover circle {
+      stroke-dashoffset: 0;
+    }
+
+
+    #box polyline {
+      fill: transparent;
+      stroke-dasharray: 360;
+      stroke-dashoffset: 360;
+      transition: all .3s;
+    }
+    #box:hover polyline {
+      stroke-dashoffset: 0;
+    }
+
+  </style>
+</head>
+<body>
+  <svg id="line">
+    <line x1="30" y1="30" x2="300" y2="30" stroke="red" stroke-width="20" stroke-dasharray="300"></line>
+  </svg>
+
+  <svg id="circle" width="200" height="200">
+    <circle cx="100" cy="100" r="50" stroke="red" stroke-width="5" fill="green"></circle >
+  </svg>
+
+  <svg id="box">
+    <polyline points="0,20 0,0, 100,0, 100,20" stroke="red" stroke-width="1"></polyline>
+    <polyline points="0,20 0,40, 100,40, 100,0" stroke="red" stroke-width="1"></polyline>
+  </svg>
+</body>
+</html>
