@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      margin: 100px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- <div class="box" id="SomeElementYouWantToAnimate"></div> -->
+  <div class="box" id="box"></div>
+
+  <button id="start">go</button>
+  <button id="start1">go1</button>
+  <button id="start2">go2</button>
+  <script src="./index.js"></script>
+  <script>
+    let box = new Animate('#box')
+
+    document.querySelector('#start').onclick = function() {
+      box.then({
+        position: 'absolute',
+        left: '100px'
+      })
+    }
+    document.querySelector('#start1').onclick = function() {
+      box.then({
+        left: '200px'
+      })
+    }
+    document.querySelector('#start2').onclick = function() {
+      box.then({
+        top: '100px'
+      })
+    }
+  </script>
+  <script>
+    // var start = null;
+    // var element = document.getElementById('SomeElementYouWantToAnimate');
+    // element.style.position = 'absolute';
+
+    // function step(timestamp) {
+    //   console.log(timestamp)
+    //   if (!start) start = timestamp;
+    //   var progress = timestamp - start;
+    //   element.style.left = Math.min(progress / 10, 200) + 'px';
+    //   if (progress < 2000) {
+    //     window.requestAnimationFrame(step);
+    //   }
+    // }
+
+    // window.requestAnimationFrame(step);
+
+
+    // {
+    //   let time = null
+
+    //   const foo = (now) => {
+    //     if (now > 1000) {
+    //       cancelAnimationFrame(time)
+    //       return
+    //     }
+
+    //     console.log(1)
+    //     time = requestAnimationFrame(foo)
+    //   }
+
+    //   requestAnimationFrame(foo)
+    // }
+  </script>
+</body>
+
+</html>
