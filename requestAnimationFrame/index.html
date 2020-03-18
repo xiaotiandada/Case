@@ -18,29 +18,31 @@
 
 <body>
   <!-- <div class="box" id="SomeElementYouWantToAnimate"></div> -->
-  <div class="box" id="box"></div>
-
   <button id="start">go</button>
   <button id="start1">go1</button>
   <button id="start2">go2</button>
+  <div class="box" id="box"></div>
+
   <script src="./index.js"></script>
   <script>
     let box = new Animate('#box')
+    box.then({
+      position: 'absolute',
+    })
 
     document.querySelector('#start').onclick = function() {
       box.then({
-        position: 'absolute',
-        left: '100px'
+        left: '100px',
       })
     }
     document.querySelector('#start1').onclick = function() {
       box.then({
-        left: '200px'
+        left: '200px',
       })
     }
     document.querySelector('#start2').onclick = function() {
       box.then({
-        top: '100px'
+        top: '100px',
       })
     }
   </script>
