@@ -80,3 +80,88 @@ class EventInit {
 
 const eventInit = new EventInit()
 eventInit.scroll()
+
+// time
+
+
+function timeFn(prefix: string) {
+  let count: number = 0
+  return (target: any, name: string, descriptor: PropertyDecorator) => {
+    let fn = descriptor.value
+
+    return {
+      ...descriptor,
+      value(...args: any) {
+        let label = `${prefix}-${count}`
+        count++
+        console.time(`${label}`)
+        try {
+          return fn.apply(this, args)
+        } catch (e) {
+          console.error(e)
+        } finally {
+          console.timeEnd(`${label}`)
+        }
+      }
+    }
+  }
+}
+
+const sleep = (time: number) => new Promise((reject: any) => setTimeout(reject, time))
+
+class Time {
+
+  @timeFn('count')
+  async timeCount() {
+    console.log('timeCount...')
+    await sleep(2000)
+    console.log('timeCount')
+  }
+}
+
+
+const time = new Time()
+time.timeCount()
+
+
+// mixin
+
+function mixin(...mixins) {
+  return target => {
+    if (!mixins.length) {
+      throw new SyntaxError('mixin error')
+    }
+
+    for (let i = 0, l = mixins.length; i < l; i++) {
+      const descs = Object.getOwnPropertyDescriptors(mixins[i])
+      const keys = Object.getOwnPropertyNames(descs)
+
+      for (let j = 0, k = keys.length; j < k; j++) {
+        const key = keys[j]
+
+        if (!target.prototype.hasOwnProperty(key)) {
+          Object.defineProperty(target.prototype, key, descs[key]);
+        }
+      }
+    }
+  }
+}
+
+const SingMinin = {
+  sing(sound) {
+    alert(sound)
+  }
+}
+
+@mixin(SingMinin)
+class Bird {
+  singMatingCall() {
+    this.sing('tweet tweet')
+  }
+}
+
+const bird = new Bird()
+// bird.singMatingCall()
+
+// redux???
+// 尝试未果 还不熟
