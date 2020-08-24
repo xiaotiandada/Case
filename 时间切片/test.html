@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Demos</title>
+  <style>
+    body {
+      background-color: #000;
+    }
+
+    .container {
+      width: 200px;
+      border: 1px solid #cc9393;
+    }
+
+    .box {
+      border-bottom: 1px solid #fff;
+      width: 250px;
+      text-align: center;
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+  <button id="btn">走你~</button>
+  <div class="container"></div>
+
+  <!-- <script>
+    const btn = document.querySelector('#btn');
+    const container = document.querySelector('.container');
+    const count = 1000;
+    const dom = generateDiv(count);
+    container.appendChild(dom);
+
+    function generateDiv(n) {
+      const fgm = document.createDocumentFragment();
+      for (let i = 0; i < n; i++) {
+        const div = document.createElement('div');
+        div.innerText = '我是DIV';
+        div.classList.add('box');
+        fgm.appendChild(div);
+      }
+      return fgm;
+    }
+
+    const boxes = document.querySelectorAll('.box');
+    btn.onclick = function () {
+      for (var i = 0; i < boxes.length; i++) {
+        // Read a layout property
+        const newWidth = container.offsetWidth - 2;
+
+        // Then invalidate layouts with writes.
+        boxes[i].style.width = newWidth + 'px';
+      }
+    }
+  </script> -->
+
+  <script>
+    const btn = document.querySelector('#btn');
+    const container = document.querySelector('.container');
+    const count = 1000;
+    const dom = generateDiv(count);
+    container.appendChild(dom);
+
+    function generateDiv(n) {
+      const fgm = document.createDocumentFragment();
+      for (let i = 0; i < n; i++) {
+        const div = document.createElement('div');
+        div.innerText = '我是DIV';
+        div.classList.add('box');
+        fgm.appendChild(div);
+      }
+      return fgm;
+    }
+
+    const boxes = document.querySelectorAll('.box');
+    btn.onclick = function () {
+      // Read a layout property
+      const newWidth = container.offsetWidth - 2;
+      for (var i = 0; i < boxes.length; i++) {
+        // Then invalidate layouts with writes.
+        boxes[i].style.width = newWidth + 'px';
+      }
+    }
+  </script>
+</body>
+
+</html>
