@@ -1,3 +1,9 @@
+var observer = new PerformanceObserver(function(list, obj) {
+  var perEntries = list.getEntries();
+  console.log(perEntries)
+});
+observer.observe({entryTypes: ["longtask"]});
+
 let requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
                             window.webkitRequestAnimationFrame || window.msRequestAnimationFrame ||
                             setTimeout
@@ -27,11 +33,13 @@ const app = new Vue({
     this.getData1()
   },
   methods: {
+    // 模拟普通的加载然后赋值
     getData() {
       setTimeout(() => {
         this.list = [...new Array(5000).keys()]
       }, 300)
     },
+    // 使用切片进行赋值
     getData1() {
       console.log('start')
       setTimeout(() => {
