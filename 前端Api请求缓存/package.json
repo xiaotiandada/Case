@@ -1,0 +1,14 @@
+{
+  "name": "api-request-cache",
+  "version": "1.0.0",
+  "description": "- https://juejin.cn/post/6844903843092758541",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1"
+  }
+}
